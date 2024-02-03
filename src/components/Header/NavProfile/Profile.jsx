@@ -9,7 +9,7 @@ function Profile() {
           src="https://edge.ixigo.com/st/nivas/_next/static/media/userFilled.12154510.svg"
           className=" inline-block w-6 h-6 nav-service-logo text-orange-500 rounded-full bg-blue-100"
         />
-        <span className="text-orange-500 font-medium text-xs text-ellipsis">
+        <span className="text-orange-500 font-medium text-xs md:text-md text-ellipsis">
           LOGIN/SIGNUP
         </span>
       </div>
