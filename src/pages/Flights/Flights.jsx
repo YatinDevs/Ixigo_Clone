@@ -4,11 +4,13 @@ import HeroBanner from "./HeroBanner/HeroBanner";
 import FlightsOffers from "./FlightsOffers/FlightsOffers";
 import WhyIxigo from "./WhyIxigo/WhyIxigo";
 import SearchPanel from "./SearchPanel/SearchPanel";
+import Advertisement from "./Advertisement/Advertisement";
 
 function Flights() {
   return (
     <div className="homePage">
       <SearchPanel />
+      <Advertisement />
       <FlightsOffers />
       <WhyIxigo />
     </div>
