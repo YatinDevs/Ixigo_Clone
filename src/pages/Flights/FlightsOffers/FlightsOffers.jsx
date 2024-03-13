@@ -39,9 +39,9 @@ function FlightsOffers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("Rendered Type : ", type);
+    // console.log("Rendered Type : ", type);
     fetchOffersDetails(type).then((res) => {
-      console.log("Data Received : ", res);
+      // console.log("Data Received : ", res);
       setOffers(res);
       setLoading(false);
     });

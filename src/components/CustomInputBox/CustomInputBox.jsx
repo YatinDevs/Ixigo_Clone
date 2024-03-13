@@ -24,9 +24,9 @@ const InputField = ({
         onChange={(e) => {
           console.log(e.target.value);
           handleInput(e.target.value);
-          autocomplete = "off";
+          autoComplete = "off";
         }}
-        autocomplete="off"
+        autoComplete="off"
       />
     </div>
   );

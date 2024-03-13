@@ -10,6 +10,7 @@ import Flights from "./pages/Flights/Flights";
 import Hotels from "./pages/Hotels/Hotels";
 import Buses from "./pages/Buses/Buses";
 import Trains from "./pages/Trains/Trains";
+import AuthProvider from "./context/AuthProvider/AuthProvider";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

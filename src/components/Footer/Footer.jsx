@@ -20,7 +20,7 @@ function Footer() {
       <div className="">
         <div className="w-full max-w-[1280px] mx-auto my-0 px-4 py-8  ">
           <h1 className="text-xl my-2 font-bold">About ixigo</h1>
-          <p className={`text-lg `}>
+          <p className={`text-lg md:text-base lg:text-lg `}>
             About ixigo Launched in 2007, ixigo is a technology company focused
             on empowering Indian travellers to plan, book and manage their trips
             across rail, air, buses and hotels. We assist travellers in making
@@ -107,14 +107,13 @@ function Footer() {
         </div>
       </div>
       <div className="bg-[#2e013d] p-4 w-full">
-        <ul className="menuItems">
-          <li className="menuItem">Terms Of Use</li>
+        <ul className="menuItems text-center ">
           <li className="menuItem">Privacy-Policy</li>
-          <li className="menuItem">About</li>
-          <li className="menuItem">Blog</li>
-          <li className="menuItem">FAQ</li>
+          <li className="menuItem">Term of Use</li>
+          <li className="menuItem">Career</li>
+          <li className="menuItem">Customer Service</li>
         </ul>
-        <p className="w-full text-center max-w-[1280px] mx-auto my-2 py-2 text-md font-bold">
+        <p className="w-full text-center max-w-[1280px] mx-auto my-2 py-2  text-xs lg:text-lg font-bold">
           {" "}
           © 2024 Le Travenues Technology Ltd. India. All brands are trademarks
           of their respective owners.
