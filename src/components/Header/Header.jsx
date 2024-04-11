@@ -5,15 +5,16 @@ import "./style.css";
 import Profile from "./NavProfile/Profile";
 import Trips from "./Trips/Trips";
 import LoginSignUpModal from "../Modals/LoginSignUpModal/LoginSignUpModal";
-import LoginSignUpForm from "../../pages/LoginSignUp/LoginSignUpForm";
+import { useAuthContext } from "../../context/AuthProvider/AuthProvider";
 
 function Header() {
-  const [showModal, setShowModal] = useState(false);
-
-  function toggleModal() {
-    setShowModal((prev) => !prev);
+  const { isLoggedIn, setShowLoginSignupForm, showLoginSignupForm, logOut } =
+    useAuthContext();
+  console.log(showLoginSignupForm);
+  function toggleLoginModal() {
+    console.log("toggle login");
+    setShowLoginSignupForm((prev) => !prev);
   }
-
   return (
     <header className="w-full  h-16 top-0 bg-white shadow-sm ">
       <div className="w-full max-w-[1280px] mx-auto h-full flex items-center px-[10px] justify-between max-sm:px-1">
@@ -23,14 +24,15 @@ function Header() {
         </div>
         <div className="flex">
           <Trips />
-          <Profile toggleModal={toggleModal} />
+          <Profile
+            isLoggedIn={isLoggedIn}
+            toggleLoginModal={toggleLoginModal}
+          />
+          {showLoginSignupForm && (
+            <LoginSignUpModal toggleLoginModal={toggleLoginModal} />
+          )}
         </div>
       </div>
-      {showModal && (
-        <LoginSignUpModal toggleModal={toggleModal}>
-          <LoginSignUpForm toggleModal={toggleModal} />
-        </LoginSignUpModal>
-      )}
     </header>
   );
 }
