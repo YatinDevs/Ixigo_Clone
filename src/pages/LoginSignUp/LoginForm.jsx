@@ -12,7 +12,7 @@ function CustomTabPanel({ children, value, index }) {
   );
 }
 
-function LoginSignUpForm() {
+function LoginForm() {
   const [tab, setTab] = useState(0);
   const handleTabSwitch = (newValue) => {
     setTab(newValue);
@@ -56,4 +56,4 @@ function LoginSignUpForm() {
   );
 }
 
-export default LoginSignUpForm;
+export default LoginForm;
