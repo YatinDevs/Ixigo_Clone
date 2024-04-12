@@ -56,10 +56,10 @@ function SearchInput() {
       `${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
     );
 
-    if (pathname.includes("flights")) {
+    if (pathname.includes("flight")) {
       navigate(`air-${encodedPath}`);
     } else {
-      navigate(`flights/air-${encodedPath}`);
+      navigate(`flight/air-${encodedPath}`);
     }
   };
   return (
@@ -119,7 +119,6 @@ function SearchInput() {
           <div className="flex md:gap-4 flex-1 flex-col md:flex-row justify-center items-center">
             <DateSelect
               className="w-full relative rounded-lg  focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7 text-[rgb(20,24,35)] py-[20px] px-[16px]  "
-              labelClass=" hidden"
               value={date_of_journey || dayjs()}
               handleDepartureDate={(value) => {
                 // console.log("handleDate");

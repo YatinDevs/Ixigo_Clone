@@ -40,15 +40,15 @@ function HeroBanner() {
   return (
     <div
       style={{
-        background: `url(${background})`,
+        background: `url(${background}) no-repeat`,
       }}
-      className="w-full imgBack relative h-[600px] md:h-[600px] flex items-center "
+      className="w-full relative h-[600px] md:h-[600px] flex items-center bg-center bg-cover "
     >
       <div className="absolute w-full "></div>
       <div className="opacity-layer"></div>
 
       <ContentWrapper>
-        <div className="heroBannerContent text-white flex flex-col items-center justify-center relative max-w-screen-xl mx-auto">
+        <div className="heroBannerContent text-black flex flex-col items-center justify-center relative max-w-screen-xl mx-auto">
           <span className="title text-3xl md:text-6xl font-bold mb-2 md:mb-0">
             Search . Book . Go
           </span>

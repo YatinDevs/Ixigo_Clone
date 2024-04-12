@@ -18,9 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Flights />} />
-              <Route path="/flights" element={<Flights />} />
+              <Route path="/flight" element={<Flights />} />
               <Route
-                path="/flights/:searchQuery"
+                path="/flight/:searchQuery"
                 element={<FlightSearchPage />}
               />
 

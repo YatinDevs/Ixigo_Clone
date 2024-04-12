@@ -7,7 +7,7 @@ const DateSelect = ({ value, handleDepartureDate, className, labelClass }) => {
   return (
     <label className="date relative hover:cursor-pointer w-full ">
       <div
-        className={`bg-white font-medium  w-full text-sm text-slate-500 z-[1]  absolute left-7 ${labelClass}`}
+        className={` font-medium  text-sm text-slate-500 z-[1]  absolute left-5 ${labelClass} `}
       >
         Departure
       </div>
@@ -20,7 +20,7 @@ const DateSelect = ({ value, handleDepartureDate, className, labelClass }) => {
           handleDepartureDate(value);
         }}
         allowClear={false}
-        className={`w-full relative rounded-lg m-3 focus:outline-none font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 border-slate-200 hover:border-slate-500
+        className={`w-full  relative rounded-lg  focus:outline-none font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 border-slate-200 hover:border-slate-500
          ${className} `}
       />
     </label>

@@ -1,4 +1,4 @@
-import axios from "./axios-instance";
+import axiosInstance from "./axios-instance";
 
 /*
   References : 
@@ -8,11 +8,38 @@ import axios from "./axios-instance";
 export const fetchOffersDetails = async (type) => {
   // console.log("fetched Details Type :", type);
   try {
-    const res = await axios.get(`/offers?filter={"type":"${type}"}`);
+    const res = await axiosInstance.get(`/offers?filter={"type":"${type}"}`);
     // console.log("Sending Fetched :", res.data);
     return res.data.data.offers;
   } catch (err) {
     // console.error("Something went wrong ", err);
+    throw err;
+  }
+};
+
+export const fetchFlightDetails = async (
+  source,
+  destination,
+  day,
+  sort = {},
+  filter = {},
+  limit = 10,
+  page = 1
+) => {
+  try {
+    const resData = await axiosInstance.get(`/flight`, {
+      params: {
+        search: JSON.stringify({ source, destination }),
+        day: day,
+        sort: JSON.stringify(sort),
+        filter: JSON.stringify(filter),
+        limit,
+        page,
+      },
+    });
+    console.log(`fetchFlightsDetails`, resData?.data);
+    return resData?.data;
+  } catch (err) {
     throw err;
   }
 };

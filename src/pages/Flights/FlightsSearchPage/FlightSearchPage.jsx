@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFlightsContext } from "../../../context/FlightsDetailProvider";
-
+import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
+import { fetchFlightDetails } from "../../../apis/flights-page-apis";
+import dayjs from "dayjs";
+import SearchPanel from "../SearchPanel/SearchPanel";
+import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
+import FilterPanel from "./FilterPanel/FilterPanel";
+import FlightsListing from "./FlightsListing/FlightsListing";
 function FlightSearchPage() {
   const { searchQuery } = useParams();
   //   console.log(useParams());
@@ -14,15 +20,65 @@ function FlightSearchPage() {
   console.log(decodedPath);
   const [location, date, counts] = decodedPath?.split("--");
   console.log(`L: ${location} ,D: ${date},C: ${counts}`);
+  const [source, destination] = location.split("-");
+  console.log(`S: ${source} ,D: ${destination}`);
+  const day = dayjs(date).format("ddd");
+  console.log(day);
+
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState({});
+  const [filter, setFilter] = useState({});
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [flightsResult, setFlightsResult] = useState([]);
+  console.log(`flightsResult`, flightsResult);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    fetchFlightDetails(source, destination, day, sort, filter, 10, page).then(
+      (data) => {
+        setIsLoading(false);
+        console.log(data);
+        setFlightsResult(data?.data.flights);
+      }
+    );
+  }, [source, destination, day, sort, page, filter]);
 
   const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
-  console.log(flightsDetails);
-  const [currentSearchDetails, setCurrentSearchDetails] = useState("");
-  console.log(currentSearchDetails);
+
   useEffect(() => {
-    setCurrentSearchDetails(flightsDetails);
+    dispatchFlightsDetails({
+      type: "set_source_location",
+      payload: { value: source },
+    });
+
+    dispatchFlightsDetails({
+      type: "set_destination_location",
+      payload: { value: destination },
+    });
+
+    dispatchFlightsDetails({
+      type: "set_date_of_journey",
+      payload: { value: date },
+    });
   }, []);
-  return <div>FlightSearchPage</div>;
+
+  const { source_location, destination_location, date_of_journey } =
+    flightsDetails;
+
+  return (
+    <div>
+      <UpdatedSearchPanel
+        flightsDetails={flightsDetails}
+        dispatchFlightsDetails={dispatchFlightsDetails}
+        flightsResult={flightsResult}
+      />
+      <FilterPanel />
+      <FlightsListing flightsResult={flightsResult} />
+    </div>
+  );
 }
 
 export default FlightSearchPage;
