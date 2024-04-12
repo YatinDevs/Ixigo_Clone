@@ -8,6 +8,7 @@ import Buses from "./pages/Buses/Buses";
 import Trains from "./pages/Trains/Trains";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import FlightsDetailProvider from "./context/FlightsDetailProvider";
+import FlightSearchPage from "./pages/Flights/FlightsSearchPage/FlightSearchPage";
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Flights />} />
               <Route path="/flights" element={<Flights />} />
+              <Route
+                path="/flights/:searchQuery"
+                element={<FlightSearchPage />}
+              />
+
               <Route path="/trains" element={<Trains />} />
               <Route path="/buses" element={<Buses />} />
               <Route path="/hotels" element={<Hotels />} />

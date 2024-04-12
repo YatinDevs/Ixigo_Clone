@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./style.css";
 import dayjs from "dayjs";
 import InputBox from "../../../components/InputBox/InputBox";
@@ -28,11 +29,47 @@ function SearchInput() {
   } = flightsDetails;
   console.log(flightsDetails);
 
+  const pathname = useLocation().pathname;
+  console.log(pathname);
+
+  const navigate = useNavigate();
+  console.log(navigate);
+  const handleSearch = (e) => {
+    console.log("clicked");
+    const { adult, child, infant } = travel_details?.numbers;
+    if (source_location == "") {
+      errorToast("Please Enter Source Location");
+      return;
+    }
+    if (destination_location == "") {
+      errorToast("Please Enter Destination Location");
+      return;
+    }
+
+    if (source_location == destination_location) {
+      errorToast(
+        "Both airports are the same, Please Select Different Airports"
+      );
+      return;
+    }
+    const encodedPath = btoa(
+      `${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
+    );
+
+    if (pathname.includes("flights")) {
+      navigate(`air-${encodedPath}`);
+    } else {
+      navigate(`flights/air-${encodedPath}`);
+    }
+  };
   return (
     <div className="p-2">
       <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
         className="bg-white border border-slate-200 shadow-[0px_0px_30px_-10px_rgba(0,0,0,0.2)] rounded-[20px]  my-2 mx-auto
-    flex flex-col "
+    flex flex-col"
       >
         <div className="border-none p-[20px] gap-2 md:gap-10 flex md:flex-row flex-col rounded-[20px] ">
           <div className="flex flex-1 gap-2 md:gap-4 flex-col md:flex-row justify-center items-center">
@@ -104,7 +141,10 @@ function SearchInput() {
             />
           </div>
           <div className="flex gap-4 flex-col md:flex-row justify-center items-center">
-            <SearchButton className="bg-orange-500 flex-1 py-4 px-7 rounded-xl text-white font-semibold w-full" />
+            <SearchButton
+              className="bg-orange-500 hover:bg-orange-700 flex-1 py-4 px-7 rounded-xl text-white font-semibold w-full"
+              handleSearch={handleSearch}
+            />
           </div>
         </div>
         <div>

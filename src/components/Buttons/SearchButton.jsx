@@ -1,8 +1,11 @@
 import React from "react";
 
-const SearchButton = ({ type, className }) => {
+const SearchButton = ({ type, className, handleSearch }) => {
   return (
-    <button className={`${className} uppercase transition-all `}>
+    <button
+      onClick={handleSearch}
+      className={`${className} uppercase transition-all `}
+    >
       SEARCH {type}
     </button>
   );

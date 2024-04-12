@@ -14,11 +14,11 @@ import {
   locationImg5Org,
 } from "../../../constants";
 import "./style.css";
+import Advertisement from "../Advertisement/Advertisement";
 
 function HeroBanner() {
   const [background, setBackground] = useState("");
 
-  // Array containing all image paths
   const images = [
     locationImg1Con,
     locationImg1Org,
@@ -38,14 +38,13 @@ function HeroBanner() {
   }, []);
 
   return (
-    <div className="w-full relative h-[600px] md:h-[600px] bg-#f2f2f2 flex items-center ">
-      <div className="absolute w-full ">
-        <img
-          src={background}
-          alt="Background"
-          className="w-full object-cover object-center "
-        />
-      </div>
+    <div
+      style={{
+        background: `url(${background})`,
+      }}
+      className="w-full imgBack relative h-[600px] md:h-[600px] flex items-center "
+    >
+      <div className="absolute w-full "></div>
       <div className="opacity-layer"></div>
 
       <ContentWrapper>
@@ -53,7 +52,7 @@ function HeroBanner() {
           <span className="title text-3xl md:text-6xl font-bold mb-2 md:mb-0">
             Search . Book . Go
           </span>
-          {/* <SearchPanel /> */}
+          <SearchPanel />
         </div>
       </ContentWrapper>
     </div>
