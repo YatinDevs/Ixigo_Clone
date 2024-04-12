@@ -23,7 +23,6 @@ function Header() {
           <Navbar />
         </div>
         <div className="flex">
-          <Trips />
           <Profile
             isLoggedIn={isLoggedIn}
             toggleLoginModal={toggleLoginModal}

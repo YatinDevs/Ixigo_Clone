@@ -4,6 +4,6 @@
 
 @layer components {
   .inputBox input:focus + label {
-    @apply text-[rgb(34,118,227)];
+    @apply text-orange-500;
   }
 }

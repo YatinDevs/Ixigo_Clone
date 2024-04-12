@@ -1,24 +1,61 @@
-import React from "react";
-import "./style.css";
-import Img from "../../../components/lazyLoadImage/Img";
+import React, { useState, useEffect } from "react";
+import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
 import SearchPanel from "../SearchPanel/SearchPanel";
+import {
+  locationImg1Con,
+  locationImg1Org,
+  locationImg2Con,
+  locationImg2Org,
+  locationImg3Con,
+  locationImg3Org,
+  locationImg4Con,
+  locationImg4Org,
+  locationImg5Con,
+  locationImg5Org,
+} from "../../../constants";
+import "./style.css";
 
 function HeroBanner() {
+  const [background, setBackground] = useState("");
+
+  // Array containing all image paths
+  const images = [
+    locationImg1Con,
+    locationImg1Org,
+    locationImg2Con,
+    locationImg2Org,
+    locationImg3Con,
+    locationImg3Org,
+    locationImg4Con,
+    locationImg4Org,
+    locationImg5Con,
+    locationImg5Org,
+  ];
+
+  useEffect(() => {
+    const randomImagePath = images[Math.floor(Math.random() * images.length)];
+    setBackground(randomImagePath);
+  }, []);
+
   return (
-    <div className="heroBanner">
-      <div className="banner-Img">
-        {/* <Img
-          className="w-full object-cover object-center h-full"
-          src="https://images.ixigo.com/image/upload/banner/83963788ee686e58841a2f820364e169-rypoa.webp"
-        /> */}
-      </div>
-      {/* <div className="banner-Img ">
-        <Img
-          className="w-full object-cover object-center h-full"
-          src="https://images.ixigo.com/image/upload/banner/454f2e71a29d80524e19dfdf3e68a721-lbvfx.webp"
+    <div className="w-full relative h-[600px] md:h-[600px] bg-#f2f2f2 flex items-center ">
+      <div className="absolute w-full ">
+        <img
+          src={background}
+          alt="Background"
+          className="w-full object-cover object-center "
         />
-      </div> */}
-      <SearchPanel />
+      </div>
+      <div className="opacity-layer"></div>
+
+      <ContentWrapper>
+        <div className="heroBannerContent text-white flex flex-col items-center justify-center relative max-w-screen-xl mx-auto">
+          <span className="title text-3xl md:text-6xl font-bold mb-2 md:mb-0">
+            Search . Book . Go
+          </span>
+          {/* <SearchPanel /> */}
+        </div>
+      </ContentWrapper>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
 function Advertisement() {
   return (
     <ContentWrapper>
-      <div className="max-w-[1440px]  rounded-2xl overflow-hidden shadow-lg mx-2 h-[64px] md:h-fit md:mx-10 my-10">
+      <div className="max-w-[1440px]   rounded-2xl overflow-hidden shadow-lg mx-2 h-[64px] md:h-fit md:mx-10 my-10">
         {/* // Ad */}
         <img
           src={

@@ -9,6 +9,7 @@ import Advertisement from "./Advertisement/Advertisement";
 function Flights() {
   return (
     <div className="homePage">
+      {/* <HeroBanner /> */}
       <SearchPanel />
       <Advertisement />
       <FlightsOffers />

@@ -1,17 +1,16 @@
 import React from "react";
 import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
 import SearchInput from "./SearchInput";
+import SpecialFares from "./SpecialFares";
 
 function SearchPanel() {
   return (
-    <div className="searchPanel ">
+    <div className="w-full ">
       <ContentWrapper>
         <h1
-          className=" text-right font-medium  text-lg mr-[30px] "
+          className=" text-right font-medium text-lg mr-[30px] "
           style={{ textShadow: "rgba(0, 0, 0, 0.25)" }}
-        >
-          Flight Booking
-        </h1>
+        ></h1>
         <SearchInput />
       </ContentWrapper>
     </div>

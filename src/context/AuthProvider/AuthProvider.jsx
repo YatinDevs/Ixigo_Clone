@@ -112,6 +112,7 @@ export default function AuthProvider({ children }) {
     setRedirect,
     redirectTo,
     setRedirectTo,
+    user,
   };
   return (
     <AuthContext.Provider value={provider}>{children}</AuthContext.Provider>
