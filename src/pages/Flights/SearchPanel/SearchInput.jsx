@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import "./style.css";
 import dayjs from "dayjs";
-import { DatePicker } from "antd";
 import InputBox from "../../../components/InputBox/InputBox";
 import SwapButton from "../../../components/Buttons/SwapButton";
 import TravellersCount from "../../../components/TravellersCount/TravellersCount";
 import SpecialFares from "./SpecialFares";
 import SearchButton from "../../../components/Buttons/SearchButton";
+import { useFlightsContext } from "../../../context/FlightsDetailProvider";
+import DateSelect from "../../../components/DateSelect/DateSelect";
+
 function SearchInput() {
   const [inputFromValue, setInputFromValue] = useState("");
   const [inputToValue, setInputToValue] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  console.log(selectedDate);
   console.log(inputFromValue);
   console.log(inputToValue);
+  const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
+  // console.log(useFlightsContext());
+
+  const {
+    source_location,
+    destination_location,
+    oneway,
+    travel_details,
+    date_of_journey,
+  } = flightsDetails;
+  console.log(flightsDetails);
 
   return (
     <div className="p-2">
@@ -29,6 +44,13 @@ function SearchInput() {
               inputValue={inputFromValue}
               setInputValue={setInputFromValue}
               className="w-full"
+              selectedValue={source_location}
+              handleValue={(value) => {
+                dispatchFlightsDetails({
+                  type: "set_source_location",
+                  payload: { value },
+                });
+              }}
             />
             <SwapButton
               handleSwap={(e) => {
@@ -36,7 +58,7 @@ function SearchInput() {
                 const temp = inputFromValue;
                 setInputFromValue(inputToValue);
                 setInputToValue(temp);
-                dispatchJourneyDetails({ type: "swap_location" });
+                dispatchFlightsDetails({ type: "swap_location" });
               }}
               className="self-center swap-button flex items-center justify-center bg-white cursor-pointer  z-[1] rounded-xl border shadow-md w-9 h-9 m-[-20px] "
             />
@@ -48,11 +70,38 @@ function SearchInput() {
               inputValue={inputToValue}
               setInputValue={setInputToValue}
               className="w-full"
+              selectedValue={destination_location}
+              handleValue={(value) => {
+                dispatchFlightsDetails({
+                  type: "set_destination_location",
+                  payload: { value },
+                });
+              }}
             />
           </div>
           <div className="flex md:gap-4 flex-1 flex-col md:flex-row justify-center items-center">
-            <DatePicker className="w-full  relative rounded-lg  focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7 text-[rgb(20,24,35)] py-[20px] px-[16px]  " />
-            <TravellersCount />
+            <DateSelect
+              className="w-full relative rounded-lg  focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7 text-[rgb(20,24,35)] py-[20px] px-[16px]  "
+              labelClass=" hidden"
+              value={date_of_journey || dayjs()}
+              handleDepartureDate={(value) => {
+                // console.log("handleDate");
+                dispatchFlightsDetails({
+                  type: "set_date_of_journey",
+                  payload: { value },
+                });
+              }}
+            />
+            <TravellersCount
+              value={travel_details}
+              handleValue={(secondType, target) => {
+                dispatchFlightsDetails({
+                  type: "set_travel_details",
+                  secondType: secondType,
+                  target: target,
+                });
+              }}
+            />
           </div>
           <div className="flex gap-4 flex-col md:flex-row justify-center items-center">
             <SearchButton className="bg-orange-500 flex-1 py-4 px-7 rounded-xl text-white font-semibold w-full" />

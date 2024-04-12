@@ -1,19 +1,25 @@
 import React from "react";
 
-const Counter = ({ name, desc, count, disabledNeg, disabledPos, handleClick }) => {
-    
-    function handleIncrease(){
-        
-         handleClick("increase");       
+const Counter = ({
+  name,
+  desc,
+  count,
+  disabledNeg,
+  disabledPos,
+  handleClick,
+}) => {
+  function handleIncrease(e) {
+    e.preventDefault();
+    handleClick("increase");
+  }
+  function handleDecrease(e) {
+    e.preventDefault();
+    handleClick("decrease");
+  }
 
-    }
-    function handleDecrease(){
-        handleClick("decrease"); 
-    }
-  
-    return (
+  return (
     <div className="flex w-full justify-between m-auto my-3 ">
-      <div className={disabledPos ? `text-red-500` : '' }>
+      <div className={disabledPos ? `text-red-500` : ""}>
         <p className="font-medium">{name}</p>
         <p className="font-thin text-xs">{desc}</p>
       </div>

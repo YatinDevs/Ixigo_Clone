@@ -10,6 +10,7 @@ const InputBox = ({
   inputValue,
   setInputValue,
   handleValue,
+  selectedValue,
   error,
 }) => {
   const [airportList, setAirportList] = useState(null);
@@ -57,7 +58,7 @@ const InputBox = ({
   function handleSelect(airport) {
     console.log(airport);
     setShowsuggestion(false);
-    // handleValue(airport?.iata_code);
+    handleValue(airport?.iata_code);
     setInputValue(`${airport?.city}, (${airport?.iata_code})`);
   }
   return (

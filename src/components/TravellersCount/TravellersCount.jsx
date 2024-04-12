@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BiCloset } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
-import Counter from "../../../../../Qollabra/Goibibo_Clone_New-main/Goibibo_Clone_New/src/components/SmallComponents/Counter/Counter";
+import Counter from "../Counter/Counter";
 
 const TravellersCount = ({ value, handleValue, className }) => {
   const [showMenu, setShowMenu] = useState(false);
