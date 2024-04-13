@@ -22,7 +22,7 @@ const FlightsCard = ({
   };
 
   return (
-    <article className="card w-full border-2 relative rounded-xl h-fit py-4 px-2 hover:shadow-even transition-all bg-white  duration-500 scale-[98%] hover:scale-100">
+    <article className="card w-[90%] mx-auto mb-2 border-2 relative  h-fit py-4 px-2 hover:shadow-even transition-all bg-white  duration-500 scale-[98%] ">
       <div className=" ml-4 pb-3 flex gap-4">
         {" "}
         <img
@@ -66,7 +66,7 @@ const FlightsCard = ({
         <div className="font-semibold basis-[30%] text-center flex items-center justify-center flex-wrap md:gap-4">
           ₹{ticketPrice}
           <button
-            className=" font-semibold text-white truncate py-2 px-4 bg-orange-500 m-2 rounded-full"
+            className=" font-semibold text-white truncate py-2 px-4 bg-orange-500 m-2 "
             onClick={handleNavigate}
           >
             {" "}

@@ -62,7 +62,7 @@ const InputBox = ({
     setInputValue(`${airport?.city}, (${airport?.iata_code})`);
   }
   return (
-    <div className={`inputBox relative p-0 ${className} `}>
+    <div className={`relative p-0 ${className} `}>
       <input
         placeholder={placeholder ? placeholder : "Enter your text"}
         type={type}
@@ -74,7 +74,7 @@ const InputBox = ({
           setInputValue(e.target.value);
           handleInput(e.target.value);
         }}
-        className="w-full relative rounded-lg  focus:outline-none  border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 "
+        className="w-full relative rounded-lg bg-transparent focus:outline-none  border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 "
       />
 
       <label
@@ -86,7 +86,7 @@ const InputBox = ({
         {label ? label : "Input"}
       </label>
       {showsuggestion && (
-        <ul className="absolute max-h-[200px] md:h-[200px] overflow-y-auto bg-white border-2 border-gray-200 rounded-lg w-full text-sm md:text-lg z-10">
+        <ul className="absolute text-black max-h-[200px] md:h-[200px] overflow-y-auto bg-white border-2 border-gray-200 rounded-lg w-full text-sm md:text-lg z-10">
           {suggestionList?.length > 0 ? (
             suggestionList?.map((airportDetails) => (
               <li
@@ -107,7 +107,7 @@ const InputBox = ({
               </li>
             ))
           ) : (
-            <div className="font-medium text-slate-300 text-lg py-4 text-center w-full h-full flex justify-center items-center">
+            <div className="font-medium text-black text-lg py-4 text-center w-full h-full flex justify-center items-center">
               NO RESULT FOUND
             </div>
           )}

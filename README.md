@@ -131,3 +131,13 @@ Note on projectID: Every API request must include a 'projectID' in the headers. 
     👉  Each offer card has a title, and a description of the offer.
 
     👉  On the sides of the offers, add Navigation Arrows (Left and Right Navigation Arrows). These arrows are used to scroll through different offers.
+
+Thiruvananthapuram, (TRV) before update nav
+UpdatedSearchPanel.jsx:47 Ahmedabad, (AMD)
+UpdatedSearchPanel.jsx:48 M2 {$L: 'en', $u: undefined, $d: Thu Apr 25 2024 00:00:00 GMT+0530 (India Standard Time), $y: 2024, $M: 3, …}
+UpdatedSearchPanel.jsx:49 {numbers: {…}}
+
+AMD before nav
+SearchInput.jsx:39 GOI
+SearchInput.jsx:40 M2 {$L: 'en', $u: undefined, $d: Wed Apr 17 2024 00:00:00 GMT+0530 (India Standard Time), $y: 2024, $M: 3, …}
+SearchInput.jsx:41 {numbers: {…}, class: 'economy'}

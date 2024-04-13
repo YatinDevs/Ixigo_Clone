@@ -1,5 +1,6 @@
 import React from "react";
 import FlightsCard from "./FlightsCard";
+import FlightCard from "./FlightCard";
 
 function FlightsListing({ flightsResult }) {
   return (
@@ -7,7 +8,7 @@ function FlightsListing({ flightsResult }) {
       <div>
         <h1>Flights Listing</h1>
         {flightsResult?.map((details) => (
-          <FlightsCard {...details} />
+          <FlightCard {...details} key={details._id} />
         ))}
       </div>
     </div>

@@ -9,9 +9,9 @@ import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
 import FilterPanel from "./FilterPanel/FilterPanel";
 import FlightsListing from "./FlightsListing/FlightsListing";
 function FlightSearchPage() {
+  // Extracting data from params
   const { searchQuery } = useParams();
   //   console.log(useParams());
-
   const encodedString = searchQuery ?? "";
   //   console.log(encodedString);
   const extractedEncodedPath = encodedString.replace("air-", "");
@@ -25,12 +25,16 @@ function FlightSearchPage() {
   const day = dayjs(date).format("ddd");
   console.log(day);
 
+  const [adult, child, infant] = counts?.split("-");
+  console.log(`a:${adult},c: ${child},i: ${infant}`);
+
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState({});
   const [filter, setFilter] = useState({});
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
   const [flightsResult, setFlightsResult] = useState([]);
   console.log(`flightsResult`, flightsResult);
 
@@ -40,13 +44,11 @@ function FlightSearchPage() {
     fetchFlightDetails(source, destination, day, sort, filter, 10, page).then(
       (data) => {
         setIsLoading(false);
-        console.log(data);
+        console.log(data, `data fetched`);
         setFlightsResult(data?.data.flights);
       }
     );
   }, [source, destination, day, sort, page, filter]);
-
-  const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
 
   useEffect(() => {
     dispatchFlightsDetails({
@@ -63,6 +65,10 @@ function FlightSearchPage() {
       type: "set_date_of_journey",
       payload: { value: date },
     });
+    dispatchFlightsDetails({
+      type: "set_travel_details_numbers",
+      payload: { value: { adult, child, infant } },
+    });
   }, []);
 
   const { source_location, destination_location, date_of_journey } =
@@ -74,6 +80,7 @@ function FlightSearchPage() {
         flightsDetails={flightsDetails}
         dispatchFlightsDetails={dispatchFlightsDetails}
         flightsResult={flightsResult}
+        setFlightsResult={setFlightsResult}
       />
       <FilterPanel />
       <FlightsListing flightsResult={flightsResult} />

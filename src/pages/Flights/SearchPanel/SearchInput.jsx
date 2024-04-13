@@ -34,6 +34,11 @@ function SearchInput() {
 
   const navigate = useNavigate();
   console.log(navigate);
+
+  console.log(source_location, `before nav`);
+  console.log(destination_location);
+  console.log(date_of_journey);
+  console.log(travel_details);
   const handleSearch = (e) => {
     console.log("clicked");
     const { adult, child, infant } = travel_details?.numbers;

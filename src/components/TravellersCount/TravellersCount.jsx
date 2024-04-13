@@ -5,9 +5,10 @@ import Counter from "../Counter/Counter";
 
 const TravellersCount = ({ value, handleValue, className }) => {
   const [showMenu, setShowMenu] = useState(false);
+  console.log(value);
   return (
     <div
-      className={`text-left   relative border-2 rounded-md p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
+      className={`text-left ${className}  relative border-2 rounded-md p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
         showMenu ? "border-b border-b-orange-500" : ""
       } `}
       onClick={() => {

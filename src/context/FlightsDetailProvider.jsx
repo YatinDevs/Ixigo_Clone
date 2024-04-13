@@ -43,7 +43,7 @@ function reducerFunction(state, action) {
       const { numbers } = travel_details;
 
       if (action.secondType == "increase") {
-        numbers[action.target] += 1;
+        numbers[action.target] = numbers[action.target] * 1 + 1;
 
         travel_details.numbers = { ...numbers };
       } else if (action.secondType == "decrease") {
@@ -55,7 +55,13 @@ function reducerFunction(state, action) {
       return { ...state, travel_details };
     }
     case "set_travel_details_numbers": {
-      return { ...state, numbers: action.payload.value };
+      return {
+        ...state,
+        travel_details: {
+          ...state.travel_details,
+          numbers: action.payload.value,
+        },
+      };
     }
 
     default:
