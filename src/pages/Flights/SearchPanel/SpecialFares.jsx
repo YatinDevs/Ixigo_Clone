@@ -4,7 +4,7 @@ import { Tooltip, Button } from "antd";
 function SpecialFares() {
   console.log(FLIGHT_SEARCH_PANNEL_SPECIAL_FARES);
   return (
-    <div className=" px-5 py-2 flex flex-col md:flex-row">
+    <div className=" px-0 py-2 md:py-2 md:px-5 flex flex-col md:flex-row">
       <p className="text-slate-500 text-center self-center">
         Special Fares(Coming Soon):{" "}
       </p>
@@ -14,7 +14,7 @@ function SpecialFares() {
             key={details.title}
             placement="topLeft"
             title={
-              <div>
+              <div className="">
                 <img src={details.logo} />
                 <p>
                   {details.header.pre} {details.header.mid}{" "}
@@ -24,7 +24,7 @@ function SpecialFares() {
               </div>
             }
           >
-            <Button className="flex justify-center items-center">
+            <Button className="flex text-xs md:text-md justify-center items-center">
               <img src={details.logo} className="inline" />
               {details.title}
             </Button>
