@@ -5,17 +5,17 @@ import Counter from "../Counter/Counter";
 
 const TravellersCount = ({ value, handleValue, className }) => {
   const [showMenu, setShowMenu] = useState(false);
-  // console.log(value);
+  console.log(value);
   return (
     <div
-      className={`text-left ${className}  relative border-b-2  p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
+      className={`text-left ${className}   relative border-b-2  p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
         showMenu ? "border-b border-b-orange-500" : ""
       } `}
       onClick={() => {
         setShowMenu(true);
       }}
     >
-      <p className="font-medium leading-0 px-4 pt-2 m-0">
+      <p className="font-medium leading-0 px-4 pt-2 m-0 ">
         {value?.numbers?.adult} {value?.numbers?.adult > 1 ? "Adults" : "Adult"}
         {value?.numbers?.child > 0
           ? value?.numbers?.child > 1
@@ -45,7 +45,7 @@ const TravellersCount = ({ value, handleValue, className }) => {
         }`}
       >
         <button
-          className="close shadow-all text-center flex items-center justify-center w-6 h-6 bg-white absolute -top-3 -right-3 rounded-full"
+          className="close text-black shadow-all text-center flex items-center justify-center w-6 h-6 bg-white absolute -top-3 -right-3 rounded-full"
           onClick={() => {
             // console.log("clicked cross");
             setTimeout(() => {
