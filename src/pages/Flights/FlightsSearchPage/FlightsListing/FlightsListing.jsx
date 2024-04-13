@@ -8,7 +8,7 @@ function FlightsListing({ flightsResult }) {
       <div>
         <h1>Flights Listing</h1>
         {flightsResult?.map((details) => (
-          <FlightCard {...details} key={details._id} />
+          <FlightsCard {...details} key={details._id} />
         ))}
       </div>
     </div>

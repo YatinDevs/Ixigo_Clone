@@ -8,7 +8,7 @@ const TravellersCount = ({ value, handleValue, className }) => {
   console.log(value);
   return (
     <div
-      className={`text-left ${className}  relative border-2 rounded-md p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
+      className={`text-left ${className}  relative border-b-2  p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
         showMenu ? "border-b border-b-orange-500" : ""
       } `}
       onClick={() => {
@@ -34,7 +34,7 @@ const TravellersCount = ({ value, handleValue, className }) => {
 
       <label
         htmlFor={"id"}
-        className={`absolute -top-3 left-3 px-1 rounded bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2]`}
+        className={`absolute -top-3 left-3 px-1  bg-[#fff] text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2]`}
       >
         Travellers & Class
       </label>

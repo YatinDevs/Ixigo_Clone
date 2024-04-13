@@ -123,7 +123,7 @@ function SearchInput() {
           </div>
           <div className="flex md:gap-4 flex-1 flex-col md:flex-row justify-center items-center">
             <DateSelect
-              className="w-full relative rounded-lg  focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7 text-[rgb(20,24,35)] py-[20px] px-[16px]  "
+              className="w-full relative  focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7 text-[rgb(20,24,35)] py-[20px] px-[16px]  "
               value={date_of_journey || dayjs()}
               handleDepartureDate={(value) => {
                 // console.log("handleDate");

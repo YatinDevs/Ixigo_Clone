@@ -110,7 +110,7 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
                 // console.log("handleDate");
                 setSelectedDate(value);
               }}
-              className="w-full relative rounded-lg  bg-transparent text-white focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 hover:bg-transparent focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7  py-[20px] px-[16px]  "
+              className="w-full relative   bg-transparent text-white focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 hover:bg-transparent focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7  py-[20px] px-[16px]  "
             />
             <TravellersCount
               value={travel_details}
