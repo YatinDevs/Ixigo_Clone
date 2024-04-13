@@ -79,7 +79,7 @@ const InputBox = ({
 
       <label
         htmlFor={id}
-        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-5px] left-5 px-1  bg-[#fff]  font-medium leading-[18px] text-sm ${
+        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-5px] left-5 px-1    font-medium leading-[18px] text-sm ${
           error ? "text-red-500" : "text-[rgb(119,119,119)]"
         } `}
       >
