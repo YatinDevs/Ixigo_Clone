@@ -8,6 +8,7 @@ import SearchPanel from "../SearchPanel/SearchPanel";
 import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
 import FilterPanel from "./FilterPanel/FilterPanel";
 import FlightsListing from "./FlightsListing/FlightsListing";
+
 function FlightSearchPage() {
   // Extracting data from params
   const { searchQuery } = useParams();
