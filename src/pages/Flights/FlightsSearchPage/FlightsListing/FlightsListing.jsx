@@ -5,10 +5,9 @@ import FlightCard from "./FlightCard";
 function FlightsListing({ flightsResult }) {
   return (
     <div>
-      <div>
-        <h1>Flights Listing</h1>
+      <div className="flex flex-col gap-2">
         {flightsResult?.map((details) => (
-          <FlightsCard {...details} key={details._id} />
+          <FlightCard {...details} key={details._id} />
         ))}
       </div>
     </div>

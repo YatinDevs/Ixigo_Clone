@@ -253,3 +253,10 @@ export const AIRPORTS = [
     iata_code: "IXJ",
   },
 ];
+export const AIRLINES_INFO = [
+  { name: "Air India", key: "AI" },
+  { name: "IndiGo", key: "6E" },
+  { name: "Vistara", key: "UK" },
+  { name: "SpiceJet", key: "SG" },
+  { name: "Go First", key: "G8" },
+];

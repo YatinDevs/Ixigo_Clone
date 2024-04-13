@@ -10,9 +10,9 @@ import { useAuthContext } from "../../context/AuthProvider/AuthProvider";
 function Header() {
   const { isLoggedIn, setShowLoginSignupForm, showLoginSignupForm, logOut } =
     useAuthContext();
-  console.log(showLoginSignupForm);
+  // console.log(showLoginSignupForm);
   function toggleLoginModal() {
-    console.log("toggle login");
+    // console.log("toggle login");
     setShowLoginSignupForm((prev) => !prev);
   }
   return (

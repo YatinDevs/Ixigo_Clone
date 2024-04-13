@@ -17,16 +17,16 @@ function FlightSearchPage() {
   const extractedEncodedPath = encodedString.replace("air-", "");
   //   console.log(extractedEncodedPath);
   const decodedPath = atob(extractedEncodedPath);
-  console.log(decodedPath);
+  // console.log(decodedPath);
   const [location, date, counts] = decodedPath?.split("--");
-  console.log(`L: ${location} ,D: ${date},C: ${counts}`);
+  // console.log(`L: ${location} ,D: ${date},C: ${counts}`);
   const [source, destination] = location.split("-");
-  console.log(`S: ${source} ,D: ${destination}`);
+  // console.log(`S: ${source} ,D: ${destination}`);
   const day = dayjs(date).format("ddd");
-  console.log(day);
+  // console.log(day);
 
   const [adult, child, infant] = counts?.split("-");
-  console.log(`a:${adult},c: ${child},i: ${infant}`);
+  // console.log(`a:${adult},c: ${child},i: ${infant}`);
 
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState({});
@@ -36,7 +36,7 @@ function FlightSearchPage() {
 
   const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
   const [flightsResult, setFlightsResult] = useState([]);
-  console.log(`flightsResult`, flightsResult);
+  // console.log(`flightsResult`, flightsResult);
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,7 +44,7 @@ function FlightSearchPage() {
     fetchFlightDetails(source, destination, day, sort, filter, 10, page).then(
       (data) => {
         setIsLoading(false);
-        console.log(data, `data fetched`);
+        // console.log(data, `data fetched`);
         setFlightsResult(data?.data.flights);
       }
     );

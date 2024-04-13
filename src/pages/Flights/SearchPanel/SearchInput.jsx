@@ -14,9 +14,9 @@ function SearchInput() {
   const [inputFromValue, setInputFromValue] = useState("");
   const [inputToValue, setInputToValue] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-  console.log(selectedDate);
-  console.log(inputFromValue);
-  console.log(inputToValue);
+  // console.log(selectedDate);
+  // console.log(inputFromValue);
+  // console.log(inputToValue);
   const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
   // console.log(useFlightsContext());
 
@@ -27,20 +27,20 @@ function SearchInput() {
     travel_details,
     date_of_journey,
   } = flightsDetails;
-  console.log(flightsDetails);
+  // console.log(flightsDetails);
 
   const pathname = useLocation().pathname;
-  console.log(pathname);
+  // console.log(pathname);
 
   const navigate = useNavigate();
-  console.log(navigate);
+  // console.log(navigate);
 
-  console.log(source_location, `before nav`);
-  console.log(destination_location);
-  console.log(date_of_journey);
-  console.log(travel_details);
+  // console.log(source_location, `before nav`);
+  // console.log(destination_location);
+  // console.log(date_of_journey);
+  // console.log(travel_details);
   const handleSearch = (e) => {
-    console.log("clicked");
+    // console.log("clicked");
     const { adult, child, infant } = travel_details?.numbers;
     if (source_location == "") {
       errorToast("Please Enter Source Location");

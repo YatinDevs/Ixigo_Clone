@@ -25,7 +25,7 @@ const InputBox = ({
         }
       );
       const resData = await data.json();
-      console.log(resData.data.airports);
+      // console.log(resData.data.airports);
       setAirportList(resData?.data?.airports);
       setSuggestionList(resData?.data?.airports);
     }
@@ -56,7 +56,7 @@ const InputBox = ({
   };
 
   function handleSelect(airport) {
-    console.log(airport);
+    // console.log(airport);
     setShowsuggestion(false);
     handleValue(airport?.iata_code);
     setInputValue(`${airport?.city}, (${airport?.iata_code})`);
@@ -70,7 +70,7 @@ const InputBox = ({
         autoComplete="off"
         value={inputValue}
         onChange={(e) => {
-          console.log(e.target.value);
+          // console.log(e.target.value);
           setInputValue(e.target.value);
           handleInput(e.target.value);
         }}

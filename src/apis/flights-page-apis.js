@@ -37,7 +37,7 @@ export const fetchFlightDetails = async (
         page,
       },
     });
-    console.log(`fetchFlightsDetails`, resData?.data);
+    // console.log(`fetchFlightsDetails`, resData?.data);
     return resData?.data;
   } catch (err) {
     throw err;

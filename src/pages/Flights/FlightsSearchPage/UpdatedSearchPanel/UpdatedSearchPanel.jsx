@@ -18,14 +18,14 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
   const extractedEncodedPath = encodedString.replace("air-", "");
   //   console.log(extractedEncodedPath);
   const decodedPath = atob(extractedEncodedPath);
-  console.log(decodedPath);
+  // console.log(decodedPath);
   const [location, date, counts] = decodedPath?.split("--");
-  console.log(`L: ${location} ,D: ${date},C: ${counts}`);
+  // console.log(`L: ${location} ,D: ${date},C: ${counts}`);
   const [source, destination] = location.split("-");
-  console.log(`S: ${source} ,D: ${destination}`);
+  // console.log(`S: ${source} ,D: ${destination}`);
 
   const [adult, child, infant] = counts?.split("-");
-  console.log(`a:${adult},c: ${child},i: ${infant}`);
+  // console.log(`a:${adult},c: ${child},i: ${infant}`);
 
   // To Make update Search
   const [inputSourceValue, setInputSourceValue] = useState(source);
@@ -42,7 +42,7 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
   const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
   const { travel_details } = flightsDetails;
 
-  console.log(travel_details, `details travel`);
+  // console.log(travel_details, `details travel`);
   const navigate = useNavigate();
 
   const regex = /\((.*?)\)/;
