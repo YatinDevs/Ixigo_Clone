@@ -8,6 +8,7 @@ import SearchPanel from "../SearchPanel/SearchPanel";
 import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
 import FilterPanel from "./FilterPanel/FilterPanel";
 import FlightsListing from "./FlightsListing/FlightsListing";
+import { Pagination, Select } from "antd";
 
 function FlightSearchPage() {
   // Extracting data from params
@@ -28,7 +29,7 @@ function FlightSearchPage() {
 
   const [adult, child, infant] = counts?.split("-");
   // console.log(`a:${adult},c: ${child},i: ${infant}`);
-
+  const [total, setTotal] = useState(10);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState({});
   const [filter, setFilter] = useState({});
@@ -84,7 +85,16 @@ function FlightSearchPage() {
         setFlightsResult={setFlightsResult}
       />
       <FilterPanel />
-      <FlightsListing flightsResult={flightsResult} />
+      <FlightsListing flightsResult={flightsResult} isLoading={isLoading} />
+      <Pagination
+        className="my-4 flex items-center justify-center"
+        total={total}
+        onChange={(page) => {
+          setPage(page);
+          window.scrollBy(0, -window.innerHeight);
+          document.getElementById("flightsListContainer").scrollTop = 0;
+        }}
+      />
     </div>
   );
 }

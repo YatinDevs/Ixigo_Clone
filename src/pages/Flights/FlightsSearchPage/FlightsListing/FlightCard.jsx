@@ -149,7 +149,7 @@ function FlightCard({ ...props }) {
             </div>
           </div>
           <div className="border-l border-gray-200"></div>
-          <div className="flex items-center  justify-center  gap-2 flex-col md:flex-row  md:mx-6">
+          <div className="flex items-center  justify-center  gap-2 flex-col lg:flex-row  md:mx-6">
             <p className="text-orange-500 text-md md:text-xl font-semibold p-1 md:p-2">
               <span>&#x20B9;</span>
               {ticketPrice}
