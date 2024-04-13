@@ -1,5 +1,4 @@
 import React from "react";
-import FlightsCard from "./FlightsCard";
 import FlightCard from "./FlightCard";
 
 function FlightsListing({ flightsResult }) {

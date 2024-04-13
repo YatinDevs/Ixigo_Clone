@@ -9,6 +9,10 @@ import G8Logo from "../../../../assets/images/airlines/G8.png";
 import SGLogo from "../../../../assets/images/airlines/SG.png";
 import UKLogo from "../../../../assets/images/airlines/UK.png";
 import { AIRPORTS } from "../../../../constants";
+import FlightCardSummary from "./FlightCardSummary";
+import { useParams } from "react-router-dom";
+import dayjs from "dayjs";
+dayjs.locale("en");
 
 const getCityFromIATACode = (iataCode) => {
   const airport = AIRPORTS.find((airport) => airport.iata_code === iataCode);
@@ -41,7 +45,7 @@ function AirlineName({ flightID }) {
   }
 
   return (
-    <div className="text-sm md:text-md md:mx-4 my-6  text-gray-400  font-thin flex flex-col py-4">
+    <div className="text-sm md:text-md md:mx-4 my-2  text-gray-400  font-thin flex flex-col py-2">
       {logo && (
         <img
           src={logo}
@@ -49,7 +53,7 @@ function AirlineName({ flightID }) {
           className=" w-6 md:w-15 h-6 md:h-12 self-center"
         />
       )}
-      <div className="text-md text-gray-400  font-thin flex flex-col p-1 md:p-4">
+      <div className="text-md text-gray-400  font-thin flex flex-col p-1 md:p-2">
         <p className="inline-block">
           {airline ? airline.name : "Unknown Airline"}
         </p>
@@ -62,24 +66,9 @@ function AirlineName({ flightID }) {
   );
 }
 
-function FlightCard({
-  _id,
-  flightID,
-  airline,
-  aircraftModel,
-  source,
-  stops,
-  amenities,
-  arrivalTime,
-  availableSeats,
-  departureTime,
-  destination,
-  duration,
-  ticketPrice,
-}) {
+function FlightCard({ ...props }) {
   const [showDetails, setShowDetails] = useState(false);
-
-  console.log(
+  const {
     _id,
     flightID,
     airline,
@@ -92,26 +81,49 @@ function FlightCard({
     departureTime,
     destination,
     duration,
-    ticketPrice
-  );
+    ticketPrice,
+  } = props;
 
-  AIRPORTS.filter;
+  const { searchQuery } = useParams();
+  const encodedString = searchQuery ?? "";
+  const extractedEncodedPath = encodedString.replace("air-", "");
+  const decodedPath = atob(extractedEncodedPath);
+  const [location, date, counts] = decodedPath?.split("--");
+  console.log(date);
+
+  const formatDate = (dateString) => {
+    const date = dayjs(dateString);
+    const formattedDate = date.format("ddd D MMM");
+    return formattedDate;
+  };
+
   return (
     <ContentWrapper>
       <div className="mx-2 md:mx-16">
-        <div className="w-full h-[150px] mx-auto border border-1 border-slate-100 shadow-lg bg-white flex ">
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            setShowDetails((prev) => !prev);
+          }}
+          className="w-full h-[150px] mx-auto border border-1 border-b-0  border-slate-100 shadow-lg bg-white flex "
+        >
           <div className="">
             <AirlineName flightID={flightID} />
           </div>
           <div className="border-l border-gray-200"></div>
-          <div className="flex gap-2 flex-1 w-full text-sm md:text-lg">
-            <div className="text-md text-gray-700 md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
+          <div className="flex gap-2  w-full text-sm md:text-lg">
+            <div className="text-md text-gray-700 gap-1  md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
               <p className="inline-block text-sm text-center">{source}</p>
 
               <p className="inline-block text-black font-semibold text-lg text-center">
                 {arrivalTime}
               </p>
-              {getCityFromIATACode(source)}
+              <p className="inline-block text-sm text-center">
+                {formatDate(date)}
+              </p>
+              <p className="inline-block text-sm text-center">
+                {getCityFromIATACode(source)}
+              </p>
             </div>
 
             <div className="flex flex-col justify-center  items-center text-center w-full">
@@ -122,13 +134,18 @@ function FlightCard({
                 Stops {stops}
               </div>
             </div>
-            <div className="text-md md:mx-10 text-gray-700 justify-center font-thin flex flex-col p-1 md:p-4">
+            <div className="text-md md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
               <p className="inline-block text-sm text-center">{destination}</p>
 
               <p className="inline-block text-black font-semibold text-lg text-center">
                 {departureTime}
               </p>
-              {getCityFromIATACode(destination)}
+              <p className="inline-block text-sm text-center">
+                {formatDate(date)}
+              </p>
+              <p className="inline-block text-sm text-center">
+                {getCityFromIATACode(destination)}
+              </p>
             </div>
           </div>
           <div className="border-l border-gray-200"></div>
@@ -139,14 +156,15 @@ function FlightCard({
             </p>
             <Button
               type={`Book `}
-              className="bg-orange-500  rounded-md mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2 md:px-6 "
-            />
-            <div
-              className="font-medium text-center text-xl text-gray-600 cursor-pointer select-none transition-all"
-              onClick={() => {
-                setShowDetails((prev) => !prev);
+              handleClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                console.log("booked");
               }}
-            >
+              className="bg-orange-500  rounded-md mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
+            />
+            <div className="font-medium text-center text-xl text-gray-600 cursor-pointer select-none transition-all">
               {showDetails ? (
                 <>
                   <FaAngleUp className="inline" />
@@ -159,6 +177,7 @@ function FlightCard({
             </div>
           </div>
         </div>
+        {showDetails && <FlightCardSummary date={date} {...props} />}
       </div>
     </ContentWrapper>
   );

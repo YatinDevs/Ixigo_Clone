@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button = ({ type, className, handleSearch }) => {
+const Button = ({ type, className, handleClick }) => {
   return (
     <button
-      onClick={handleSearch}
+      onClick={handleClick}
       className={`${className} uppercase transition-all `}
     >
       {type}
