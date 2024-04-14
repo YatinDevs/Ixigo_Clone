@@ -149,8 +149,9 @@ function FlightsDetails({ ...props }) {
             <p className="inline-block text-xs md:text-lg text-center">
               {formatDate(date)}
             </p>
-
-            {AirportDetails(source)}
+            <p className="inline-block text-xs md:text-lg text-center">
+              {AirportDetails(source)}{" "}
+            </p>
           </div>
 
           <div className="flex flex-col justify-center text-xs md:text-lg items-center text-center w-full">
@@ -173,8 +174,9 @@ function FlightsDetails({ ...props }) {
             <p className="inline-block text-xs md:text-lg text-center">
               {formatDate(date)}
             </p>
-
-            {AirportDetails(destination)}
+            <p className="inline-block text-xs md:text-lg text-center">
+              {AirportDetails(destination)}{" "}
+            </p>
           </div>
         </div>
         <div className="border-l border-gray-200"></div>

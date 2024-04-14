@@ -99,13 +99,13 @@ function FlightCard({ ...props }) {
 
   return (
     <ContentWrapper>
-      <div className="mx-2 md:mx-16">
+      <div className="mx-2 md:mx-5">
         <div
           onClick={(e) => {
             e.preventDefault();
             setShowDetails((prev) => !prev);
           }}
-          className="w-full h-[150px] justify-center items-center self-center  mx-auto border border-1 border-b-0  border-slate-100 shadow-lg bg-white flex "
+          className="w-full h-[150px] md:h-[180px] justify-center items-center self-center  mx-auto border border-1 border-b-0  border-slate-100 shadow-lg bg-white flex "
         >
           <div className="">
             <AirlineName flightID={flightID} />
@@ -120,8 +120,8 @@ function FlightCard({ ...props }) {
               <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
                 {arrivalTime}
               </p>
-              <p className="inline-block text-xs md:text-lg text-center">
-                {formatDate(date)}
+              <p className=" text-xs md:text-lg text-center">
+                {/* {formatDate(date)} */}
               </p>
               <p className="inline-block text-xs md:text-lg text-center">
                 {getCityFromIATACode(source)}
@@ -145,7 +145,7 @@ function FlightCard({ ...props }) {
                 {departureTime}
               </p>
               <p className="inline-block text-xs md:text-lg text-center">
-                {formatDate(date)}
+                {/* {formatDate(date)} */}
               </p>
               <p className="inline-block text-xs md:text-lg text-center">
                 {getCityFromIATACode(destination)}

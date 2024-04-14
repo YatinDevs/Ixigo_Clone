@@ -45,7 +45,7 @@ function AirlineName({
       logo = null;
   }
   return (
-    <div className="text-sm md:text-md md:mx-4 md:mt-4 mx-1 text-black py-1 gap-2 font-thin flex flex-row ">
+    <div className="text-xs md:text-lg  text-black py-1 gap-2 font-thin flex flex-row ">
       <div className="">
         {logo && (
           <img
@@ -57,8 +57,8 @@ function AirlineName({
       </div>
       <div className="h-1 w-1 bg-black rounded flex justify-center self-center items-center"></div>
 
-      <div className="md:text-sm  text-black list-disc font-thin flex flex-col">
-        <p className="inline-block text-sm">
+      <div className="text-xs md:text-lg text-black list-disc font-thin flex flex-col">
+        <p className="inline-block text-xs md:text-lg">
           {airlines ? airlines.name : "Unknown Airline"}
           {/* {aircraftModel} */}
           {airlines ? ` ${key}${flightID}` : "Unknown ID"}
@@ -66,7 +66,7 @@ function AirlineName({
       </div>
       <div className="h-1 w-1 bg-black rounded flex justify-center self-center items-center"></div>
       <div>
-        <p className="inline-block text-sm text-center">Economy</p>
+        <p className="inline-block text-xs md:text-lg text-center">Economy</p>
       </div>
     </div>
   );
