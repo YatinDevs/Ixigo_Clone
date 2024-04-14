@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <div className="">
       <nav className=" nav-links bg-white relative flex h-full items-center gap-6 font-semibold text-slate-500 mx-5 max-lg:gap-0 max-lg:fixed max-lg:bottom-0 max-lg:h-16 max-lg:w-full max-lg:left-0 max-lg:mx-0 max-lg:px-5  max-lg:justify-between max-lg:shadowup z-10">
-        <NavLink to={"/flights"} className="nav-item">
+        <NavLink to={"/flight"} className="nav-item">
           <img className="nav-service-logo " src={flightLogo} />
           <span>Flights</span>
         </NavLink>

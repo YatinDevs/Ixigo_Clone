@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { BiSolidError } from "react-icons/bi";
 import { useAuthContext } from "../../context/AuthProvider/AuthProvider";
+import InputBox from "../../components/InputBox/InputBox";
+import Button from "../../components/Buttons/Button";
 
 function SignUpTab() {
   const { setShowLoginSignupForm, signUp } = useAuthContext();
@@ -57,35 +59,39 @@ function SignUpTab() {
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSignUpButton}>
       <h2 className="text-xl font-bold text-gray-800">Sign up to ixigo</h2>
-      <input
+      <InputBox
         onChange={removeError}
         placeholder="Enter Name"
         ref={signupNameRef}
         className="input-field"
       />
-      <input
+      <InputBox
         onChange={removeError}
         placeholder="Enter Email"
         ref={signupEmailRef}
         className="input-field"
       />
-      <input
+      <InputBox
         onChange={removeError}
         ref={signupPasswordRef}
         placeholder="Enter Password"
         className="input-field"
         type="password"
       />
-      <input
+      <InputBox
         onChange={removeError}
         ref={signupConfirmPasswordRef}
         placeholder="Confirm Password"
         className="input-field"
         type="password"
       />
-      <button type="submit" className="button">
+      <Button
+        type="SignUp"
+        handleClick={handleSignUpButton}
+        className="bg-orange-500 py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
+      >
         SignUp
-      </button>
+      </Button>
       {errorMessage && (
         <div className="error-message">
           <BiSolidError className="error-icon" />

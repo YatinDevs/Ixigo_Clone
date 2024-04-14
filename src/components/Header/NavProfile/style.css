@@ -1,2 +1,11 @@
-.ant-menusubmenu-title {
+.confirm-ok-button {
+  background-color: #1890ff; /* Set background color */
+  color: #fff; /* Set text color */
+  border-color: #1890ff; /* Set border color */
+}
+
+.confirm-ok-button:hover,
+.confirm-ok-button:focus {
+  background-color: #40a9ff; /* Set background color on hover/focus */
+  border-color: #40a9ff; /* Set border color on hover/focus */
 }

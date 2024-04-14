@@ -77,7 +77,7 @@ function FlightSearchPage() {
     flightsDetails;
 
   return (
-    <div>
+    <div className="mt-12">
       <UpdatedSearchPanel
         flightsDetails={flightsDetails}
         dispatchFlightsDetails={dispatchFlightsDetails}
