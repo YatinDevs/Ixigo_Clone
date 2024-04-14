@@ -46,7 +46,7 @@ function Carousel({ data, loading, endpoint, title }) {
           className="carouselRightNav arrow text-2xl text-black bg-white p-4 w-14 h-14 rounded-full absolute -translate-y-2/4 cursor-pointer z-[2] hidden top-[55%] md:block transition-all hover:scale-110 right-6 shadow-even"
           onClick={() => navigation("right")}
         />
-        <h1 className="text-left text-xl font-bold pb-[10px] ">
+        <h1 className="text-left text-xs md:text-lg font-bold pb-[10px] ">
           Today's Flight Offers
         </h1>
 

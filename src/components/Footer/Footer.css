@@ -33,12 +33,10 @@
 .menuItems .menuItem {
   transition: all ease 0.3s;
   cursor: pointer;
-  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   .menuItems .menuItem {
-    font-size: 16px;
   }
 }
 

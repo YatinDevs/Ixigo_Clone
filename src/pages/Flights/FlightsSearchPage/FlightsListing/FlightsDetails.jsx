@@ -57,7 +57,7 @@ function AirlineDetails({
   }
 
   return (
-    <div className="text-sm md:text-md  text-black py-1 gap-2 font-thin flex flex-row ">
+    <div className="text-xs md:text-lg  text-black py-1 gap-2 font-thin flex flex-row ">
       <div className="">
         {logo && (
           <img
@@ -69,8 +69,8 @@ function AirlineDetails({
       </div>
       <div className="h-1 w-1 bg-black rounded flex justify-center self-center items-center"></div>
 
-      <div className="text-sm text-black list-disc font-thin flex flex-col">
-        <p className="inline-block text-sm">
+      <div className="text-xs md:text-lg text-black list-disc font-thin flex flex-col">
+        <p className="inline-block text-xs md:text-lg">
           {airlines ? airlines.name : "Unknown Airline"}
           {/* {aircraftModel} */}
           {airlines ? ` ${key}${flightID}` : "Unknown ID"}
@@ -78,7 +78,7 @@ function AirlineDetails({
       </div>
       <div className="h-1 w-1 bg-black rounded flex justify-center self-center items-center"></div>
       <div>
-        <p className="inline-block text-sm text-center">Economy</p>
+        <p className="inline-block text-xs md:text-lg text-center">Economy</p>
       </div>
     </div>
   );
@@ -135,42 +135,42 @@ function FlightsDetails({ ...props }) {
         <AirlineDetails {...props} />
       </div>
       <div className="flex md:flex-row flex-col">
-        <div className="flex gap-2  w-full text-sm md:text-lg">
-          <div className="text-md text-gray-700 gap-1  md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
-            <p className="inline-block text-black  text-lg text-center">
+        <div className="flex gap-2  w-full text-xs md:text-lg">
+          <div className="text-xs md:text-lg text-gray-700 gap-1  md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
+            <p className="inline-block text-black  text-xs md:text-lg text-center">
               {source}
             </p>
-            <p className="inline-block text-sm text-center">
+            <p className="inline-block text-xs md:text-lg text-center">
               {getCityFromIATACode(source)}
             </p>
-            <p className="inline-block text-black font-semibold text-lg text-center">
+            <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
               {arrivalTime}
             </p>
-            <p className="inline-block text-sm text-center">
+            <p className="inline-block text-xs md:text-lg text-center">
               {formatDate(date)}
             </p>
 
             {AirportDetails(source)}
           </div>
 
-          <div className="flex flex-col justify-center  items-center text-center w-full">
+          <div className="flex flex-col justify-center text-xs md:text-lg items-center text-center w-full">
             <AiTwotoneClockCircle className="text-2xl" />
 
             <div className="0 text-center w-full text-md text-gray-700 justify-center  font-thin flex flex-col p-1 md:p-4">
               {duration} hours
             </div>
           </div>
-          <div className="text-md md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
-            <p className="inline-block text-black  text-lg text-center">
+          <div className="text-xs md:text-lg md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
+            <p className="inline-block text-black  text-xs md:text-lg text-center">
               {destination}
             </p>
-            <p className="inline-block text-sm text-center">
+            <p className="inline-block text-xs md:text-lg text-center">
               {getCityFromIATACode(destination)}
             </p>
-            <p className="inline-block text-black font-semibold text-lg text-center">
+            <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
               {departureTime}
             </p>
-            <p className="inline-block text-sm text-center">
+            <p className="inline-block text-xs md:text-lg text-center">
               {formatDate(date)}
             </p>
 
@@ -211,33 +211,35 @@ function AmenitiesDetails({ ...props }) {
           <FaWifi
             className={`text-${
               ticketPrice >= 2250 && duration >= 4 ? "black" : "gray-400"
-            } text-lg`}
+            } text-xs md:text-lg`}
           />
-          <p className="text-sm">Wifi</p>
+          <p className="text-xs md:text-lg">Wifi</p>
         </div>
         <div className="flex gap-2 items-center h-10">
           <FaPlug
             className={`text-${
               ticketPrice >= 2400 ? "black" : "gray-400"
-            } text-lg`}
+            } text-xs md:text-lg`}
           />
-          <p className="text-sm">In-seat Power</p>
+          <p className="text-xs md:text-lg">In-seat Power</p>
         </div>
       </div>
       <div className="flex flex-col justify-around">
         <div className="flex gap-2 items-center h-10">
           <IoMdRestaurant
-            className={`text-${duration >= 6 ? "black" : "gray-400"} text-lg`}
+            className={`text-${
+              duration >= 6 ? "black" : "gray-400"
+            } text-xs md:text-lg`}
           />
-          <p className="text-sm">Food</p>
+          <p className="text-xs md:text-lg">Food</p>
         </div>
         <div className="flex gap-2 items-center h-10">
           <FaYoutube
             className={`text-${
               ticketPrice >= 2100 ? "black" : "gray-400"
-            } text-lg`}
+            } text-xs md:text-lg`}
           />
-          <p className="text-sm">On demand video</p>
+          <p className="text-xs md:text-lg">On demand video</p>
         </div>
       </div>
     </div>

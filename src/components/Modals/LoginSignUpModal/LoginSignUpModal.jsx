@@ -11,7 +11,7 @@ function LoginSignUpModal({ toggleLoginModal }) {
     <>
       <div className="fixed top-0  left-0 w-full h-full backdrop-blur-sm bg-[rgba(71,85,105,0.7)] z-10"></div>
       <div className="flex justify-center items-center">
-        <div className="fixed bg-white z-50 top-1/3  rounded-lg   ">
+        <div className="fixed bg-white z-50 top-1/3 mx-5 rounded-lg   ">
           <button
             onClick={toggleLoginModal}
             className="absolute top-[0px] right-[-1px] text-xl"

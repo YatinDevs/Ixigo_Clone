@@ -16,11 +16,11 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-[#3a1248] text-white text-opacity-80 w-full">
+    <footer className="bg-[#3a1248] text-white  text-opacity-80 w-full">
       <div className="">
         <div className="w-full max-w-[1280px] mx-auto my-0 px-4 py-8  ">
-          <h1 className="text-xl my-2 font-bold">About ixigo</h1>
-          <p className={`text-lg md:text-base lg:text-lg `}>
+          <h1 className="text-md md:text-xl my-2 font-bold">About ixigo</h1>
+          <p className={`text-xs md:text-lg `}>
             About ixigo Launched in 2007, ixigo is a technology company focused
             on empowering Indian travellers to plan, book and manage their trips
             across rail, air, buses and hotels. We assist travellers in making
@@ -37,7 +37,7 @@ function Footer() {
           {!expanded && (
             <p
               onClick={toggleExpansion}
-              className="body-md my-2  text-blue-400 block w-fit xl:cursor-pointer"
+              className=" my-2 text-xs md:text-lg text-blue-400 block w-fit xl:cursor-pointer"
             >
               Read more
             </p>
@@ -45,13 +45,15 @@ function Footer() {
           {expanded && (
             <p
               onClick={toggleExpansion}
-              className="body-md my-2  text-blue-400 block w-fit xl:cursor-pointer"
+              className="text-xs md:text-lg my-2  text-blue-400 block w-fit xl:cursor-pointer"
             >
               Read less
             </p>
           )}
           <div className={` ${expanded ? "block" : "hidden"}`}>
-            <p className={`text-lg ${expanded ? "block" : "hidden"}`}>
+            <p
+              className={`text-xs md:text-lg ${expanded ? "block" : "hidden"}`}
+            >
               Our OTA platforms allow travellers to book train tickets, flight
               tickets, bus tickets, hotels and cabs, while providing travel
               utility tools and services developed using in-house proprietary
@@ -68,10 +70,10 @@ function Footer() {
               website today.
             </p>
 
-            <h1 className="text-xl my-2 font-bold">
+            <h1 className="text-md md:text-xl my-2 font-bold">
               Here's how we can help you:{" "}
             </h1>
-            <table className="border border-collapse w-full">
+            <table className="border text-xs md:text-lg border-collapse w-full">
               <tbody>
                 <tr className="border">
                   <td className="border p-4">Flights</td>
@@ -106,12 +108,12 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="bg-[#2e013d] p-4 w-full">
-        <ul className="menuItems text-center ">
-          <li className="menuItem">Privacy-Policy</li>
-          <li className="menuItem">Term of Use</li>
-          <li className="menuItem">Career</li>
-          <li className="menuItem">Customer Service</li>
+      <div className="bg-[#2e013d] text-xs md:text-lg p-4 w-full">
+        <ul className="menuItems text-center text-xs md:text-lg ">
+          <li className="menuItem text-xs md:text-lg">Privacy-Policy</li>
+          <li className="menuItem text-xs md:text-lg">Term of Use</li>
+          <li className="menuItem text-xs md:text-lg">Career</li>
+          <li className="menuItem text-xs md:text-lg">Customer Service</li>
         </ul>
         <p className="w-full text-center max-w-[1280px] mx-auto my-2 py-2  text-xs lg:text-lg font-bold">
           {" "}

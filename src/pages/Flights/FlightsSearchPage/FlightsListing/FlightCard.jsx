@@ -45,7 +45,7 @@ function AirlineName({ flightID }) {
   }
 
   return (
-    <div className="text-sm md:text-md md:mx-4 my-2  text-gray-400  font-thin flex flex-col py-2">
+    <div className=" text-xs md:text-lg md:mx-4 my-2 justify-center items-center self-center  text-gray-400  font-thin flex flex-col py-2">
       {logo && (
         <img
           src={logo}
@@ -105,51 +105,55 @@ function FlightCard({ ...props }) {
             e.preventDefault();
             setShowDetails((prev) => !prev);
           }}
-          className="w-full h-[150px] mx-auto border border-1 border-b-0  border-slate-100 shadow-lg bg-white flex "
+          className="w-full h-[150px] justify-center items-center self-center  mx-auto border border-1 border-b-0  border-slate-100 shadow-lg bg-white flex "
         >
           <div className="">
             <AirlineName flightID={flightID} />
           </div>
           <div className="border-l border-gray-200"></div>
-          <div className="flex gap-2  w-full text-sm md:text-lg">
-            <div className="text-md text-gray-700 gap-1  md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
-              <p className="inline-block text-sm text-center">{source}</p>
+          <div className="flex gap-2  w-full text-xs md:text-lg">
+            <div className="text-xs md:text-lg text-gray-700 gap-1  md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
+              <p className="inline-block text-xs md:text-lg text-center">
+                {source}
+              </p>
 
-              <p className="inline-block text-black font-semibold text-lg text-center">
+              <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
                 {arrivalTime}
               </p>
-              <p className="inline-block text-sm text-center">
+              <p className="inline-block text-xs md:text-lg text-center">
                 {formatDate(date)}
               </p>
-              <p className="inline-block text-sm text-center">
+              <p className="inline-block text-xs md:text-lg text-center">
                 {getCityFromIATACode(source)}
               </p>
             </div>
 
-            <div className="flex flex-col justify-center  items-center text-center w-full">
-              <div className="border-b-2 border-slate-500 text-center w-full text-md text-gray-700 justify-center  font-thin flex flex-col p-1 md:p-4">
+            <div className="flex flex-col justify-center  items-center text-center text-xs md:text-lg w-full">
+              <div className="border-b-2 border-slate-500 text-center w-full text-xs md:text-lg text-gray-700 justify-center  font-thin flex flex-col p-1 md:p-4">
                 {duration} hours
               </div>
-              <div className="text-md text-gray-700 justify-center text-center font-thin flex flex-col p-1 md:p-4">
+              <div className="text-xs md:text-lg text-gray-700 justify-center text-center font-thin flex flex-col p-1 md:p-4">
                 Stops {stops}
               </div>
             </div>
-            <div className="text-md md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
-              <p className="inline-block text-sm text-center">{destination}</p>
+            <div className="text-xs md:text-lg md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
+              <p className="inline-block text-xs md:text-lg text-center">
+                {destination}
+              </p>
 
-              <p className="inline-block text-black font-semibold text-lg text-center">
+              <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
                 {departureTime}
               </p>
-              <p className="inline-block text-sm text-center">
+              <p className="inline-block text-xs md:text-lg text-center">
                 {formatDate(date)}
               </p>
-              <p className="inline-block text-sm text-center">
+              <p className="inline-block text-xs md:text-lg text-center">
                 {getCityFromIATACode(destination)}
               </p>
             </div>
           </div>
           <div className="border-l border-gray-200"></div>
-          <div className="flex items-center  justify-center  gap-2 flex-col lg:flex-row  md:mx-6">
+          <div className="flex items-center text-xs md:text-lg justify-center  gap-2 flex-col lg:flex-row  md:mx-6">
             <p className="text-orange-500 text-md md:text-xl font-semibold p-1 md:p-2">
               <span>&#x20B9;</span>
               {ticketPrice}
@@ -164,7 +168,7 @@ function FlightCard({ ...props }) {
               }}
               className="bg-orange-500  rounded-md mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
             />
-            <div className="font-medium text-center text-xl text-gray-600 cursor-pointer select-none transition-all">
+            <div className="font-medium text-center text-xs md:text-lg text-gray-600 cursor-pointer select-none transition-all">
               {showDetails ? (
                 <>
                   <FaAngleUp className="inline" />

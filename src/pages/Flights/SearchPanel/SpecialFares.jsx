@@ -5,10 +5,10 @@ function SpecialFares() {
   console.log(FLIGHT_SEARCH_PANNEL_SPECIAL_FARES);
   return (
     <div className=" px-0 py-2 md:py-2 md:px-5 flex flex-col md:flex-row">
-      <p className="text-slate-500 text-center self-center">
+      <p className="text-slate-500 text-center text-xs md:text-lg self-center">
         Special Fares(Coming Soon):{" "}
       </p>
-      <div className="flex gap-2 m-2">
+      <div className="flex gap-2 m-2 flex-col md:flex-row">
         {FLIGHT_SEARCH_PANNEL_SPECIAL_FARES.map((details) => (
           <Tooltip
             key={details.title}
@@ -24,8 +24,8 @@ function SpecialFares() {
               </div>
             }
           >
-            <Button className="flex text-xs md:text-md justify-center items-center">
-              <img src={details.logo} className="inline" />
+            <Button className="flex text-xs md:text-xs gap-1 justify-center items-center">
+              <img src={details.logo} className="inline w-5 h-4" />
               {details.title}
             </Button>
           </Tooltip>

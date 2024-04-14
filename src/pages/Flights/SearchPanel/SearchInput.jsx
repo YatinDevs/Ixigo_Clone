@@ -68,12 +68,12 @@ function SearchInput() {
     }
   };
   return (
-    <div className="p-2">
+    <div className="p-8 md:p-2">
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="bg-white border border-slate-200 shadow-[0px_0px_30px_-10px_rgba(0,0,0,0.2)] rounded-[20px]  my-2 mx-auto
+        className="bg-white border  border-slate-200 shadow-[0px_0px_30px_-10px_rgba(0,0,0,0.2)] rounded-[20px]  my-2 mx-auto
     flex flex-col"
       >
         <div className="border-none px-6 pt-6 md:p-[20px] gap-2 md:gap-10 flex md:flex-row flex-col rounded-[20px] ">

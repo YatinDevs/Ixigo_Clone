@@ -45,7 +45,7 @@ function Carousel({ data, loading, endpoint, title }) {
           className="carouselRightNav arrow text-2xl text-black bg-white p-4 w-14 h-14 rounded-full absolute -translate-y-2/4 cursor-pointer z-[2] hidden top-[60%] md:block transition-all hover:scale-110 right-6 shadow-even"
           onClick={() => navigation("right")}
         />
-        <h1 className="text-left text-xl font-bold pb-[10px] ">
+        <h1 className="text-left text-xs md:text-lg font-bold pb-[10px] ">
           Why Book With ixigo?
         </h1>
         {!loading ? (
@@ -57,12 +57,12 @@ function Carousel({ data, loading, endpoint, title }) {
               return (
                 <div
                   key={details.img}
-                  className="w-[270px] h-[100px] shrink-0 border-none max-md:w-[270px] max-md:h-[100px] bg-red-200 rounded-2xl"
+                  className=" w-[270px] h-[100px] shrink-0 border-none max-md:w-[200px] max-md:h-[80px] bg-red-200 rounded-2xl"
                 >
                   <div>
                     <img
                       src={details.img}
-                      className="rounded-2xl w-[270px] h-[100px]   max-md:w-[270px] max-md:h-[100px]"
+                      className="rounded-2xl md:w-[270px] h-[100px] max-md:w-[200px] max-md:h-[80px]"
                     />
                   </div>
                 </div>

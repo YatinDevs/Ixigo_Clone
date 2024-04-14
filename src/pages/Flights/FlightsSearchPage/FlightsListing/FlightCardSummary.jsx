@@ -49,7 +49,7 @@ function FlightCardSummary({ ...props }) {
       <div className="flex ">
         <div
           onClick={() => handleTabSwitch(0)}
-          className={`flex-1 md:py-2 text-center text-sm border-b-2 ${
+          className={`flex-1 md:py-2 text-center text-xs md:text-lg border-b-2 ${
             tab === 0 ? "border-orange-600 text-orange-600" : "text-slate-500"
           } cursor-pointer`}
         >
@@ -57,7 +57,7 @@ function FlightCardSummary({ ...props }) {
         </div>
         <div
           onClick={() => handleTabSwitch(1)}
-          className={`flex-1 md:py-2 text-sm text-center border-b-2 ${
+          className={`flex-1 md:py-2 text-xs md:text-lg text-center border-b-2 ${
             tab === 1 ? "border-orange-600 text-orange-600" : "text-slate-500"
           } cursor-pointer`}
         >
