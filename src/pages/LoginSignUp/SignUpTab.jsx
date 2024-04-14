@@ -3,6 +3,7 @@ import { BiSolidError } from "react-icons/bi";
 import { useAuthContext } from "../../context/AuthProvider/AuthProvider";
 import InputBox from "../../components/InputBox/InputBox";
 import Button from "../../components/Buttons/Button";
+import InputBoxRef from "../../components/InputBox/InputBoxRef";
 
 function SignUpTab() {
   const { setShowLoginSignupForm, signUp } = useAuthContext();
@@ -57,41 +58,44 @@ function SignUpTab() {
   }
 
   return (
-    <form className="flex flex-col gap-6" onSubmit={handleSignUpButton}>
-      <h2 className="text-xl font-bold text-gray-800">Sign up to ixigo</h2>
-      <InputBox
+    <form className="flex flex-col md:gap-6" onSubmit={handleSignUpButton}>
+      <h2 className="text-xs md:text-2xl font-thin  text-gray-800">
+        Sign up to ixigo
+      </h2>
+      <InputBoxRef
         onChange={removeError}
         placeholder="Enter Name"
         ref={signupNameRef}
         className="input-field"
       />
-      <InputBox
+      <InputBoxRef
         onChange={removeError}
         placeholder="Enter Email"
         ref={signupEmailRef}
         className="input-field"
       />
-      <InputBox
+      <InputBoxRef
         onChange={removeError}
         ref={signupPasswordRef}
         placeholder="Enter Password"
         className="input-field"
         type="password"
       />
-      <InputBox
+      <InputBoxRef
         onChange={removeError}
         ref={signupConfirmPasswordRef}
         placeholder="Confirm Password"
         className="input-field"
         type="password"
       />
-      <Button
-        type="SignUp"
-        handleClick={handleSignUpButton}
-        className="bg-orange-500 py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
+      <button
+        type="submit"
+        onClick={handleSignUpButton}
+        className="bg-orange-500 mx-16 my-5 md:mx-0  text-xs md:text-lg py-1 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
       >
-        SignUp
-      </Button>
+        SIGN UP
+      </button>
+
       {errorMessage && (
         <div className="error-message">
           <BiSolidError className="error-icon" />

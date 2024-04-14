@@ -14,7 +14,7 @@ function LoginSignUpModal({ toggleLoginModal }) {
         <div className="fixed bg-white z-50 top-1/3  rounded-lg   ">
           <button
             onClick={toggleLoginModal}
-            className="absolute top-2 right-2 text-2xl"
+            className="absolute top-[0px] right-[-1px] text-xl"
           >
             <IoMdCloseCircle />
           </button>

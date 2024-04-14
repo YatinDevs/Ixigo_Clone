@@ -3,19 +3,19 @@ import { BiCloset } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import Counter from "../Counter/Counter";
 
-const TravellersCount = ({ value, handleValue, className }) => {
+const TravellersCount = ({ value, handleValue, className, error }) => {
   const [showMenu, setShowMenu] = useState(false);
   console.log(value);
   return (
     <div
-      className={`text-left ${className}   relative border-b-2  p-0 m-3 w-full hover:border-b-orange-500 cursor-pointer ${
+      className={`text-left ${className}   relative border-b-2  p-0 mt-3 md:m-3 w-full hover:border-b-orange-500 cursor-pointer ${
         showMenu ? "border-b border-b-orange-500" : ""
       } `}
       onClick={() => {
         setShowMenu(true);
       }}
     >
-      <p className="font-medium leading-0 px-4 pt-2 m-0 ">
+      <p className="font-medium leading-0 px-4 pt-2 m-0 text-xs md:text-lg">
         {value?.numbers?.adult} {value?.numbers?.adult > 1 ? "Adults" : "Adult"}
         {value?.numbers?.child > 0
           ? value?.numbers?.child > 1
@@ -34,7 +34,9 @@ const TravellersCount = ({ value, handleValue, className }) => {
 
       <label
         htmlFor={"id"}
-        className={`absolute -top-3 left-3 px-1   text-[rgb(119,119,119)] font-medium leading-[18px] text-sm z-[2]`}
+        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-6px] md:top-[-5px] left-1 px-1 font-medium leading-[18px] text-xs md:text-md ${
+          error ? "text-red-500" : "text-[rgb(119,119,119)]"
+        } `}
       >
         Travellers & Class
       </label>

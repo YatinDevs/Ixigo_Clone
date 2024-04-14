@@ -125,11 +125,13 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
             />
           </div>
           <div className="flex gap-4 flex-col md:flex-row justify-center items-center">
-            <SearchButton
-              type={""}
-              handleSearch={handleSearch}
-              className="bg-orange-500 hover:bg-orange-700 flex-1 py-4 px-7  text-white font-semibold w-full"
-            />
+            <button
+              type="submit"
+              onClick={handleSearch}
+              className="bg-orange-500 mx-10  md:mx-0  text-xs md:text-lg py-2 px-8 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
+            >
+              SEARCH
+            </button>
           </div>
         </div>
       </ContentWrapper>

@@ -46,10 +46,12 @@ function LogInTab() {
   }
 
   return (
-    <form className="flex flex-col gap-6" onSubmit={handleLoginButton}>
-      <h2 className="text-xl font-bold text-gray-800">Log in to ixigo</h2>
+    <form className="flex flex-col gap-1 md:gap-6" onSubmit={handleLoginButton}>
+      <h2 className="text-xs md:text-2xl font-thin  text-gray-800">
+        Log in to ixigo
+      </h2>
       <InputBoxRef
-        label="Email"
+        label=""
         placeholder="Enter Email"
         id="email"
         type="text"
@@ -63,12 +65,12 @@ function LogInTab() {
         onChange={removeError}
         ref={loginPasswordRef}
         className=""
-        label="Password"
+        label=""
       />
       <button
         type="submit"
         onClick={handleLoginButton}
-        className="bg-orange-500 py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
+        className="bg-orange-500 mx-16 my-5 md:mx-0  text-xs md:text-lg py-1 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
       >
         LOG IN
       </button>

@@ -74,12 +74,12 @@ const InputBox = ({
           setInputValue(e.target.value);
           handleInput(e.target.value);
         }}
-        className="w-full relative  bg-transparent focus:outline-none  border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-lg leading-7 text-[rgb(20, 24, 35)] py-3 px-4 md:py-5 md:px-4 "
+        className="w-full relative bg-transparent focus:outline-none border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-xs md:text-lg md:leading-7 text-[rgb(20, 24, 35)] py-2 px-2 md:py-5 md:px-4 "
       />
 
       <label
         htmlFor={id}
-        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-5px] left-5 px-1    font-medium leading-[18px] text-sm ${
+        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-6px] md:top-[-5px] left-1 px-1 font-medium leading-[18px] text-xs md:text-md ${
           error ? "text-red-500" : "text-[rgb(119,119,119)]"
         } `}
       >
