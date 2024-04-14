@@ -9,6 +9,7 @@ import Trains from "./pages/Trains/Trains";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import FlightsDetailProvider from "./context/FlightsDetailProvider";
 import FlightSearchPage from "./pages/Flights/FlightsSearchPage/FlightSearchPage";
+import FlightBookingPage from "./pages/Flights/FlightBookingPage/FlightBookingPage";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
               <Route
                 path="/flight/:searchQuery"
                 element={<FlightSearchPage />}
+              />
+              <Route
+                path="/flight/:searchQuery/:bookingInfo"
+                element={<FlightBookingPage />}
               />
 
               <Route path="/trains" element={<Trains />} />

@@ -34,7 +34,7 @@ const TravellersCount = ({ value, handleValue, className, error }) => {
 
       <label
         htmlFor={"id"}
-        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-6px] md:top-[-5px] left-1 px-1 font-medium leading-[18px] text-xs md:text-md ${
+        className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-6px] md:top-[-15px] left-1 px-1 font-medium leading-[18px] text-xs md:text-md ${
           error ? "text-red-500" : "text-[rgb(119,119,119)]"
         } `}
       >

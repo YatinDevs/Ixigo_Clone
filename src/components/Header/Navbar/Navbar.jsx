@@ -16,13 +16,13 @@ function Navbar() {
           <img className="nav-service-logo " src={flightLogo} />
           <span>Flights</span>
         </NavLink>
-        <NavLink to={"/hotels"} className="nav-item">
-          <img className="nav-service-logo " src={hotelLogo} />
-          <span>Hotels</span>
-        </NavLink>
         <NavLink to={"/trains"} className="nav-item">
           <img className="nav-service-logo " src={trainLogo} />
           <span>Trains</span>
+        </NavLink>
+        <NavLink to={"/hotels"} className="nav-item">
+          <img className="nav-service-logo " src={hotelLogo} />
+          <span>Hotels</span>
         </NavLink>
         <NavLink to={"/buses"} className="nav-item">
           <img className="nav-service-logo" src={busLogo} />

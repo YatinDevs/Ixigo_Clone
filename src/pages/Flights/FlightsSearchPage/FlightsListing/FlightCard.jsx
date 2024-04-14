@@ -13,6 +13,7 @@ import FlightCardSummary from "./FlightCardSummary";
 import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 dayjs.locale("en");
+import { useNavigate } from "react-router-dom";
 
 const getCityFromIATACode = (iataCode) => {
   const airport = AIRPORTS.find((airport) => airport.iata_code === iataCode);
@@ -97,6 +98,12 @@ function FlightCard({ ...props }) {
     return formattedDate;
   };
 
+  const navigate = useNavigate();
+
+  const handleBook = (e) => {
+    e.preventDefault();
+    navigate(`${_id}--${ticketPrice}`);
+  };
   return (
     <ContentWrapper>
       <div className="mx-2 md:mx-5">
@@ -160,12 +167,7 @@ function FlightCard({ ...props }) {
             </p>
             <Button
               type={`Book `}
-              handleClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                console.log("booked");
-              }}
+              handleClick={handleBook}
               className="bg-orange-500  rounded-md mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
             />
             <div className="font-medium text-center text-xs md:text-lg text-gray-600 cursor-pointer select-none transition-all">

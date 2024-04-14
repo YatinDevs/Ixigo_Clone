@@ -9,3 +9,8 @@
   border-radius: 0px;
   border-bottom: 2px solid gray;
 }
+.ant-picker-outlined:hover {
+  border: none;
+  border-bottom: 2px solid;
+  border-color: #ffa500;
+}
