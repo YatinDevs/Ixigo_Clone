@@ -2,11 +2,11 @@ import React from "react";
 import SearchTrainInput from "./SearchTrainInput";
 import ContentWrapper from "../../../../components/ContentWrapper/ContentWrapper";
 
-function SearchTrainPanel() {
+function SearchTrainPanel({ trainProp, onSubmitForm }) {
   return (
     <div className="w-full ">
       <ContentWrapper>
-        <SearchTrainInput />
+        <SearchTrainInput trainProp={trainProp} onSubmitForm={onSubmitForm} />
       </ContentWrapper>
     </div>
   );

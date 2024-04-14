@@ -10,7 +10,7 @@ import ContentWrapper from "../../../../components/ContentWrapper/ContentWrapper
 import "./style.css";
 import SearchTrainPanel from "../SearchTrainPanel/SearchTrainPanel";
 
-function HeroBannerTrain() {
+function HeroBannerTrain({ trainProp, onSubmitForm }) {
   return (
     <div
       style={{
@@ -28,7 +28,7 @@ function HeroBannerTrain() {
           <span className="title text-3xl text-white md:text-6xl font-bold mb-2 md:mb-0">
             Train Ticket Booking
           </span>
-          <SearchTrainPanel />
+          <SearchTrainPanel trainProp={trainProp} onSubmitForm={onSubmitForm} />
         </div>
       </ContentWrapper>
     </div>

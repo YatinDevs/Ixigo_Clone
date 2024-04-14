@@ -36,7 +36,10 @@ function TrainPartners() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 mx-[20px] md:mx-[140px]">
           {guarantees?.map((detail) => (
-            <div className="flex gap-5 justify-center items-center">
+            <div
+              className="flex gap-5 justify-center items-center"
+              key={detail.text}
+            >
               <img src={detail.img} className="w-10 md:w-20 h-10 md:h-20 " />
               <p className="font-bold text-xs md:text-md md:text-xl">
                 {detail.text}

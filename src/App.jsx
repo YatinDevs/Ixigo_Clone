@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Layout from "./layout/Layout";
 import Flights from "./pages/Flights/Flights";
-import Hotels from "./pages/Hotels/Hotels";
 import Buses from "./pages/Buses/Buses";
 import Trains from "./pages/Trains/Trains";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import FlightsDetailProvider from "./context/FlightsDetailProvider";
 import FlightSearchPage from "./pages/Flights/FlightsSearchPage/FlightSearchPage";
 import FlightBookingPage from "./pages/Flights/FlightBookingPage/FlightBookingPage";
+import TrainSearchPage from "./pages/Trains/TrainSearchPage/TrainSearchPage";
+import Hotels from "./pages/Hotels/Hotels";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
               />
 
               <Route path="/trains" element={<Trains />} />
+              <Route
+                path="/trains/:searchTrains"
+                element={<TrainSearchPage />}
+              />
               <Route path="/buses" element={<Buses />} />
               <Route path="/hotels" element={<Hotels />} />
             </Route>
