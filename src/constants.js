@@ -329,3 +329,78 @@ export const TRAIN_STATION_NAMES = [
   "Guwahati",
   "Jaipur Junction",
 ];
+
+export const BUS_STATION_NAMES = [
+  "Mumbai, Maharashtra",
+  "Delhi, National Capital Territory of Delhi",
+  "Bangalore, Karnataka",
+  "Kolkata, West Bengal",
+  "Chennai, Tamil Nadu",
+  "Hyderabad, Telangana",
+  "Pune, Maharashtra",
+  "Ahmedabad, Gujarat",
+  "Surat, Gujarat",
+  "Jaipur, Rajasthan",
+  "Lucknow, Uttar Pradesh",
+  "Kanpur, Uttar Pradesh",
+  "Nagpur, Maharashtra",
+  "Indore, Madhya Pradesh",
+  "Thane, Maharashtra",
+  "Bhopal, Madhya Pradesh",
+  "Visakhapatnam, Andhra Pradesh",
+  "Pimpri-Chinchwad, Maharashtra",
+  "Patna, Bihar",
+  "Vadodara, Gujarat",
+  "Ghaziabad, Uttar Pradesh",
+  "Ludhiana, Punjab",
+  "Agra, Uttar Pradesh",
+  "Nashik, Maharashtra",
+  "Faridabad, Haryana",
+  "Meerut, Uttar Pradesh",
+  "Rajkot, Gujarat",
+  "Kalyan-Dombivali, Maharashtra",
+  "Vasai-Virar, Maharashtra",
+  "Varanasi, Uttar Pradesh",
+  "Srinagar, Jammu and Kashmir",
+  "Dhanbad, Jharkhand",
+  "Jodhpur, Rajasthan",
+  "Amritsar, Punjab",
+  "Raipur, Chhattisgarh",
+  "Allahabad, Uttar Pradesh",
+  "Coimbatore, Tamil Nadu",
+  "Jabalpur, Madhya Pradesh",
+  "Gwalior, Madhya Pradesh",
+  "Vijayawada, Andhra Pradesh",
+];
+
+import offerImg1 from "./assets/images/busoffers/1.webp";
+import offerImg2 from "./assets/images/busoffers/2.webp";
+import offerImg3 from "./assets/images/busoffers/3.jpeg";
+import offerImg4 from "./assets/images/busoffers/4.webp";
+import offerImg5 from "./assets/images/busoffers/5.webp";
+import offerImg6 from "./assets/images/busoffers/6.webp";
+import offerImg7 from "./assets/images/busoffers/7.webp";
+import offerImg8 from "./assets/images/busoffers/8.webp";
+import offerImg9 from "./assets/images/busoffers/9.webp";
+import offerImg10 from "./assets/images/busoffers/10.webp";
+import offerImg11 from "./assets/images/busoffers/11.jpg";
+import offerImg12 from "./assets/images/busoffers/12.webp";
+import offerImg13 from "./assets/images/busoffers/13.webp";
+import offerImg14 from "./assets/images/busoffers/14.webp";
+
+export const BUS_OFFERS = [
+  { src: offerImg1 },
+  { src: offerImg2 },
+  { src: offerImg3 },
+  { src: offerImg4 },
+  { src: offerImg5 },
+  { src: offerImg6 },
+  { src: offerImg7 },
+  { src: offerImg8 },
+  { src: offerImg9 },
+  { src: offerImg10 },
+  { src: offerImg11 },
+  { src: offerImg12 },
+  { src: offerImg13 },
+  { src: offerImg14 },
+];
