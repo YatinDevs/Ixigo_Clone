@@ -13,6 +13,7 @@ import TrainSearchPage from "./pages/Trains/TrainSearchPage/TrainSearchPage";
 import Hotels from "./pages/Hotels/Hotels";
 import BusSearchPage from "./pages/Buses/BusSearchPage/BusSearchPage";
 import TrainBookPage from "./pages/Trains/TrainBookPage/TrainBookPage";
+import BusesBookPage from "./pages/Buses/BusBookPage/BusesBookPage";
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
                 path="/buses/searchBus/:departureDate"
                 element={<BusSearchPage />}
               />
+              <Route path="/buses/booking" element={<BusesBookPage />} />
+
               <Route path="/hotels" element={<Hotels />} />
             </Route>
           </Routes>

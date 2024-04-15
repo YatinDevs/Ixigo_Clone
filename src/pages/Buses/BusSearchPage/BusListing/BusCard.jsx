@@ -9,6 +9,9 @@ import { IoFastFood } from "react-icons/io5";
 import { FaBottleWater } from "react-icons/fa6";
 import { GiRoundStar } from "react-icons/gi";
 import { IoIosArrowDown } from "react-icons/io";
+import { RiSteering2Fill } from "react-icons/ri";
+import { OpenSeat } from "../../../../assets/svgs";
+import { useNavigate } from "react-router-dom";
 
 const FACILITIES = [
   { type: "Blanket", Component: <BiSolidBlanket /> },
@@ -48,6 +51,7 @@ function BusCard({
   );
 
   const [showDetails, setShowDetails] = useState(false);
+  const [count, setCount] = useState(0);
   const [open, setOpen] = useState(false);
   function calculateDuration(departureTime, arrivalTime) {
     const departure = departureTime.split(":").map(Number);
@@ -74,6 +78,32 @@ function BusCard({
   const toggleButton = (e) => {
     e.preventDefault();
     setOpen(!open);
+  };
+
+  const tempArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  const handleCount = (type) => {
+    if (type == "add") {
+      if (count == 48) {
+        return;
+      } else {
+        setCount((prev) => prev + 1);
+      }
+    } else if (type == "remove") {
+      if (count == 0) {
+        return;
+      } else {
+        setCount((prev) => prev - 1);
+      }
+    }
+  };
+
+  const totalFare = (count > 0 ? count : 1) * fare;
+  const navigate = useNavigate();
+  const handleProceedPayment = (fare) => {
+    navigate(`/buses/booking`, {
+      state: { busId: _id, fare, departureDate },
+    });
   };
   return (
     <>
@@ -177,7 +207,7 @@ function BusCard({
                 {fare}
               </p>
               <Button
-                type={`Book `}
+                type={`SEATS `}
                 handleClick={handleAvailability}
                 className="bg-orange-500 mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
               />
@@ -198,39 +228,95 @@ function BusCard({
             </div>
           </div>
 
-          {showDetails && (
-            <div className=" flex overflow-x-auto  gap-3 py-3 text-xs md:text-lg border-b shadow-sm p-2">
-              {coaches?.map((coach) => (
-                <>
-                  <div
-                    onClick={() => {
-                      console.log("booked");
-                    }}
-                    className="h-25 md:h-fit shadow-md  flex flex-col gap-1 rounded-md border bg-green-50"
-                  >
-                    <div className="pt-2 px-2">
-                      <div className="flex gap-2 text-xs md:text-lg  justify-center items-center">
-                        <div className="h-1 w-1  bg-black rounded flex justify-center self-center items-center"></div>
-                        <p className="">
-                          <span>&#x20B9;</span>
-                        </p>
-                      </div>
-                      <div className="flex justify-center">
-                        <p className="text-center text-green-700">AVL</p>
-                      </div>
-                      <p className="text-xs text-left">8 min ago</p>
+          {
+            <div
+              className={`fifthRow selectSeats text-xs md:text-lg w-full transition-transform origin-top ${
+                showDetails ? "scale-y-100" : "scale-y-0 h-0"
+              }`}
+            >
+              <div className="w-full gap-4 flex p-4 max-md:flex-col ">
+                <div className="departure max-md:w-full mx-auto border rounded-md">
+                  <div className="px-4 py-2 text-xs md:text-lg bg-orange-600 text-center font-medium text-white ">
+                    Boarding Point
+                  </div>
+                  <div className="time m-3 text-xs md:text-lg font-medium leading-3 ">
+                    {departureTime}
+                  </div>
+                  <div className="source m-3 text-xs md:text-lg leading-3">
+                    {source}
+                  </div>
+                </div>
+                <div className="arrival max-md:w-full text-xs md:text-lg mx-auto border rounded-md ">
+                  <div className="px-4 py-2  bg-orange-600 text-center font-medium text-white text-xs md:text-lg">
+                    Dropping Point
+                  </div>
+                  <div className="time m-3 text-xs md:text-lg font-medium leading-3">
+                    {arrivalTime}
+                  </div>
+                  <div className="source m-3 text-xs md:text-lg leading-3">
+                    {destination}
+                  </div>
+                </div>
+                <div className="seatSelector w-full min-h-fit max-h-full border">
+                  <h1 className="text-center p-2 text-xs md:text-lg h-[20%] font-semibold text-slate-800 ">
+                    Select Your Seat
+                  </h1>
+
+                  <div className="bus w-[94%] border h-[160px] m-4 flex justify-between overflow-x-auto">
+                    <div className="engine w-6 h-full bg-slate-200 relative max-md:hidden">
+                      <RiSteering2Fill className="absolute -rotate-90 top-4 left-1 text-slate-700 " />
                     </div>
-                    <div className=" ">
-                      <Button
-                        type={`Book `}
-                        className="bg-orange-500 rounded-b-md  w-full shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
-                      />
+
+                    <div
+                      className={
+                        "seating p-4 relative flex flex-col justify-between " +
+                        _id
+                      }
+                    >
+                      <div className="leftSeats flex gap-2 ">
+                        {tempArr.map((item) => (
+                          <div key={item} className="space-y-2">
+                            <OpenSeat count={count} handleCount={handleCount} />{" "}
+                            <OpenSeat count={count} handleCount={handleCount} />{" "}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="rightSeats  flex gap-2 ">
+                        {tempArr.map((item) => (
+                          <div key={item} className="space-y-2">
+                            <OpenSeat count={count} handleCount={handleCount} />{" "}
+                            <OpenSeat count={count} handleCount={handleCount} />{" "}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </>
-              ))}
+                </div>
+              </div>
+
+              <div className="w-full select-none">
+                <h1 className="text-right text-xs md:text-lg mr-5 text-slate-800">
+                  Total Fare :{" "}
+                  <span className="font-semibold text-xs md:text-lg">
+                    {" "}
+                    ₹{totalFare}{" "}
+                  </span>{" "}
+                </h1>
+              </div>
+
+              <div className="flex w-full justify-end my-2 select-none ">
+                <button
+                  onClick={() => {
+                    handleProceedPayment(totalFare);
+                  }}
+                  className="bg-orange-500  px-6 py-2 mr-4 font-medium text-white text-xs md:text-lg   active:bg-blue-700 hover:bg-blue-700 hover:text-slate-100 active:text-slate-100  transition-all"
+                >
+                  Proceed to Payment
+                </button>
+              </div>
             </div>
-          )}
+          }
         </div>
       </ContentWrapper>
     </>
