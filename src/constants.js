@@ -329,7 +329,6 @@ export const TRAIN_STATION_NAMES = [
   "Guwahati",
   "Jaipur Junction",
 ];
-
 export const BUS_STATION_NAMES = [
   "Mumbai, Maharashtra",
   "Delhi, National Capital Territory of Delhi",
@@ -372,7 +371,6 @@ export const BUS_STATION_NAMES = [
   "Gwalior, Madhya Pradesh",
   "Vijayawada, Andhra Pradesh",
 ];
-
 import offerImg1 from "./assets/images/busoffers/1.webp";
 import offerImg2 from "./assets/images/busoffers/2.webp";
 import offerImg3 from "./assets/images/busoffers/3.jpeg";

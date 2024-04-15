@@ -8,6 +8,7 @@ function BusSearchForm({ busProp, onSubmitForm }) {
   const { departureDate, handleDepartureDate } = busProp;
   const { source, destination, handleDestination, handleSource, handleSwap } =
     busProp;
+
   return (
     <div className="p-8 md:p-2">
       <form

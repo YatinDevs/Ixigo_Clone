@@ -39,7 +39,7 @@ function Buses() {
     handleSwap,
   };
 
-  console.log(departureDate, source, destination);
+  // console.log(departureDate, source, destination);
 
   const navigate = useNavigate();
 

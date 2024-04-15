@@ -84,9 +84,10 @@ function TrainCard({
               </div>
 
               <div className="flex flex-col justify-center  items-center text-center text-xs md:text-lg w-full">
-                <div className="border-b-2 border-slate-500 text-center w-full text-xs md:text-lg text-gray-700 justify-center  font-thin flex flex-col p-1 md:p-4">
+                <div className="border-b-2 border-slate-500 text-center w-full text-xs md:text-lg text-gray-700 justify-center  font-thin flex flex-col ">
                   {travelDuration} hours
                 </div>
+                <div className="text-xs md:text-lg text-gray-700 justify-center text-center font-thin flex flex-col p-1 md:p-4"></div>
               </div>
               <div className="text-xs md:text-lg md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
                 <p className="inline-block text-xs md:text-lg text-center">

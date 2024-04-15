@@ -43,7 +43,7 @@ function SearchTrainInput({ trainProp, onSubmitForm }) {
               value={destination}
             />
           </div>
-          <div className="flex md:gap-4 flex-1 flex-col md:flex-row justify-center items-center">
+          <div className="flex md:gap-4 flex-1/2 flex-col md:flex-row justify-center items-center">
             <DateSelect
               value={departureDate}
               handleDepartureDate={handleDepartureDate}

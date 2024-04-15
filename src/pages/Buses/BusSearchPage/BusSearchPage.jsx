@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
 import FilterPanel from "./FilterPanel/FilterPanel";
 import BusListing from "./BusListing/BusListing";
+import { fetchBusListing } from "../../../apis/bus-page-apis";
 
 function BusSearchPage() {
   const location = useLocation();
@@ -14,7 +15,7 @@ function BusSearchPage() {
     destination,
     departureDate: dayjs(departureDate),
   });
-  console.log(busJourneyDetails);
+  const day = dayjs(Date(departureDate)).format("ddd");
 
   const [sort, setSort] = useState({});
   const [fare, setFare] = useState({});
@@ -22,8 +23,25 @@ function BusSearchPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(10);
-  const day = dayjs(Date(departureDate)).format("ddd");
+  const [filter, setFilter] = useState({});
 
+  useEffect(() => {
+    setIsLoading(true);
+    fetchBusListing(
+      busJourneyDetails.source,
+      busJourneyDetails.destination,
+      day,
+      sort,
+      filter,
+      10,
+      page
+    ).then((res) => {
+      console.log(res, `busListing`);
+      setBusListing(res?.data?.buses);
+      setIsLoading(false);
+      setTotalResults(res?.totalResults);
+    });
+  }, [busJourneyDetails, page, sort]);
   return (
     <div className="mt-20">
       <UpdatedSearchPanel
@@ -31,7 +49,11 @@ function BusSearchPage() {
         setBusJourneyDetails={setBusJourneyDetails}
       />
       <FilterPanel />
-      <BusListing busListing={busListing} />
+      <BusListing
+        busListing={busListing}
+        isLoading={isLoading}
+        departureDate={departureDate}
+      />
     </div>
   );
 }
