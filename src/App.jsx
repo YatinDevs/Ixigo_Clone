@@ -12,6 +12,7 @@ import FlightBookingPage from "./pages/Flights/FlightBookingPage/FlightBookingPa
 import TrainSearchPage from "./pages/Trains/TrainSearchPage/TrainSearchPage";
 import Hotels from "./pages/Hotels/Hotels";
 import BusSearchPage from "./pages/Buses/BusSearchPage/BusSearchPage";
+import TrainBookPage from "./pages/Trains/TrainBookPage/TrainBookPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
                 path="/trains/searchTrains/:departureDate"
                 element={<TrainSearchPage />}
               />
+              <Route path="/trains/booking" element={<TrainBookPage />} />
               <Route path="/buses" element={<Buses />} />
               <Route
                 path="/buses/searchBus/:departureDate"

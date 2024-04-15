@@ -46,7 +46,7 @@ function TrainSearchPage() {
     });
   }, [trainJourneyDetails, page, sort]);
 
-  console.log(trainsListing);
+  // console.log(trainsListing);
   return (
     <div className="mt-16">
       <UpdatedSearchPanel

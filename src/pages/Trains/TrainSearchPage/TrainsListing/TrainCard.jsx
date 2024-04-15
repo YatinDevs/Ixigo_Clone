@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import Button from "../../../../components/Buttons/Button";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import TrainAvailabilityCard from "./TrainAvailabilityCard";
+import { useNavigate } from "react-router-dom";
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -22,23 +23,8 @@ function TrainCard({
   daysOfOperation,
   departureDate,
 }) {
-  console.log(
-    _id,
-    trainName,
-    trainNumber,
-    source,
-    destination,
-    arrivalTime,
-    departureTime,
-    travelDuration,
-    fare,
-    trainType,
-    coaches,
-    daysOfOperation,
-    departureDate
-  );
   const [showDetails, setShowDetails] = useState(false);
-
+  const navigate = useNavigate();
   const handleAvailability = () => {
     setShowDetails(!showDetails);
   };
@@ -55,6 +41,13 @@ function TrainCard({
     const date = dayjs(dateString);
     const formattedDate = date.format("ddd D MMM");
     return formattedDate;
+  };
+
+  const handleBooking = (fare) => {
+    console.log("booked");
+    navigate(`/trains/booking`, {
+      state: { trainId: _id, fare, departureDate },
+    });
   };
   return (
     <>
@@ -127,28 +120,45 @@ function TrainCard({
               </div>
             </div>
           </div>
-          <div className="flex">
-            <div className=" grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7  gap-2  text-xs md:text-lg border-b shadow-sm p-2">
+
+          {showDetails && (
+            <div className=" flex overflow-x-auto  gap-3 py-3 text-xs md:text-lg border-b shadow-sm p-2">
               {coaches?.map((coach) => (
                 <>
-                  <div className="h-14 md:h-20 pt-2 px-2 flex flex-col gap-2 rounded-md border bg-green-50">
-                    <div className="flex gap-2 justify-center items-center">
-                      <p>{coach.coachType}</p>
-                      <div className="h-1 w-1  bg-black rounded flex justify-center self-center items-center"></div>
-                      <p className="">
-                        <span>&#x20B9;</span>
-                        {getFare(coach.coachType, fare)}
-                      </p>
+                  <div
+                    onClick={() => {
+                      handleBooking(getFare(coach.coachType, fare));
+                    }}
+                    className="h-25 md:h-fit shadow-md  flex flex-col gap-1 rounded-md border bg-green-50"
+                  >
+                    <div className="pt-2 px-2">
+                      <div className="flex gap-2 text-xs md:text-lg  justify-center items-center">
+                        <p className="font-semibold">{coach.coachType}</p>
+                        <div className="h-1 w-1  bg-black rounded flex justify-center self-center items-center"></div>
+                        <p className="">
+                          <span>&#x20B9;</span>
+                          {getFare(coach.coachType, fare)}
+                        </p>
+                      </div>
+                      <div className="flex justify-center">
+                        <p className="text-center text-green-700">
+                          AVL {coach.numberOfSeats}
+                        </p>
+                      </div>
+                      <p className="text-xs text-left">8 min ago</p>
                     </div>
-                    <p className="text-center text-green-700">
-                      AVL {coach.numberOfSeats}
-                    </p>
+                    <div className=" ">
+                      <Button
+                        type={`Book `}
+                        handleClick={handleAvailability}
+                        className="bg-orange-500 rounded-b-md  w-full shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
+                      />
+                    </div>
                   </div>
                 </>
               ))}
             </div>
-          </div>
-          {showDetails && <TrainAvailabilityCard />}
+          )}
         </div>
       </ContentWrapper>
     </>
