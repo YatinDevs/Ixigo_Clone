@@ -42,7 +42,7 @@ function BusInputBox({
   return (
     <div className={`relative p-0 ${className} `}>
       <input
-        placeholder={placeholder ? placeholder : "Enter train station"}
+        placeholder={placeholder ? placeholder : "Enter Bus station"}
         type={type}
         id={id}
         autoComplete="off"

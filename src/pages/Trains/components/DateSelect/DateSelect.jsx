@@ -13,14 +13,14 @@ const DateSelect = ({
 }) => {
   return (
     <label className="date relative hover:cursor-pointer w-full ">
-      <label
+      <div
         htmlFor={"id"}
         className={`absolute hover:border-orange-500 focus:border-orange-500  select-none top-[-6px] md:top-[-15px] left-1 px-1 font-medium leading-[18px] text-xs md:text-kg ${
           error ? "text-red-500" : "text-[rgb(119,119,119)]"
         } `}
       >
         Departure
-      </label>
+      </div>
       <DatePicker
         locale={locale}
         format={"DD-MM-YYYY"}

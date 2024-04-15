@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
 import FilterPanel from "./FilterPanel/FilterPanel";
@@ -7,12 +7,12 @@ import BusListing from "./BusListing/BusListing";
 
 function BusSearchPage() {
   const location = useLocation();
-  const { source, destination, departureDate } = location.state;
-
+  const { source, destination } = location.state;
+  const { departureDate } = useParams();
   const [busJourneyDetails, setBusJourneyDetails] = useState({
     source,
     destination,
-    departureDate,
+    departureDate: dayjs(departureDate),
   });
   console.log(busJourneyDetails);
 
@@ -26,10 +26,6 @@ function BusSearchPage() {
 
   return (
     <div className="mt-20">
-      <h1>hello</h1>
-      <p>{`${source}`}</p>
-      <p>{`${destination}`}</p>
-      <p>{`${departureDate.$d}`}</p>
       <UpdatedSearchPanel
         busJourneyDetails={busJourneyDetails}
         setBusJourneyDetails={setBusJourneyDetails}

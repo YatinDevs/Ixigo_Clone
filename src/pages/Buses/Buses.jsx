@@ -7,7 +7,7 @@ import WhyBus from "./BusPage/WhyBus";
 
 function Buses() {
   const [source, setSource] = useState("Mumbai, Maharashtra");
-  const [destination, setDestination] = useState("Nagpur, Maharashtra");
+  const [destination, setDestination] = useState("Thane, Maharashtra");
   const [departureDate, setDepartureDate] = useState(dayjs(Date.now()));
 
   const handleSource = (data) => {
@@ -56,8 +56,11 @@ function Buses() {
         "Source and Destination cannot be the same. Please enter different Junction."
       );
     } else {
-      navigate(`searchBus`, {
-        state: { source, destination, departureDate },
+      const dayParams = dayjs(departureDate).format(
+        "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+      );
+      navigate(`searchBus/${dayParams}`, {
+        state: { source, destination },
       });
     }
   };

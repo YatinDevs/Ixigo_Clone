@@ -47,7 +47,7 @@ function TrainInputBox({
         id={id}
         autoComplete="off"
         value={trainInputValue}
-        className={`w-full relative bg-transparent focus:outline-none border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-xs md:text-lg md:leading-7 text-[rgb(20, 24, 35)] py-2 px-2 md:py-5 md:px-4 
+        className={`w-full relative  bg-transparent focus:outline-none border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-xs md:text-lg md:leading-7 text-[rgb(20, 24, 35)] py-2 px-2 md:py-5 md:px-4 
         ${className} ${
           error ? "border-red-500" : "border-slate-200 hover:border-slate-500"
         }`}

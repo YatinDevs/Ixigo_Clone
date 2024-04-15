@@ -1,41 +1,64 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import UpdatedSearchPanel from "./UpdatedSearchPanel/UpdatedSearchPanel";
 import FilterPanel from "./FilterPanel/FilterPanel";
 import TrainsListing from "./TrainsListing/TrainsListing";
+import { fetchTrainsListing } from "../../../apis/trains-page-apis";
 
 function TrainSearchPage() {
   const location = useLocation();
-  const { source, destination, departureDate } = location.state;
+  const { source, destination } = location.state;
+  const { departureDate } = useParams();
+  console.log(departureDate);
 
   const [trainJourneyDetails, setTrainJourneyDetails] = useState({
     source,
     destination,
-    departureDate,
+    departureDate: dayjs(departureDate),
   });
   console.log(trainJourneyDetails);
+  const day = dayjs(Date(departureDate)).format("ddd");
 
   const [sort, setSort] = useState({});
   const [fare, setFare] = useState({});
+  const [filter, setFilter] = useState({});
   const [trainsListing, setTrainsListing] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(10);
-  const day = dayjs(Date(departureDate)).format("ddd");
 
+  useEffect(() => {
+    setIsLoading(true);
+    fetchTrainsListing(
+      trainJourneyDetails.source,
+      trainJourneyDetails.destination,
+      day,
+      sort,
+      filter,
+      10,
+      page
+    ).then((res) => {
+      // console.log(res, `trainListing`);
+      setTrainsListing(res?.data?.trains);
+      setIsLoading(false);
+      setTotalResults(res?.totalResults);
+    });
+  }, [trainJourneyDetails, page, sort]);
+
+  console.log(trainsListing);
   return (
-    <div className="mt-20">
-      <h1>hello</h1>
-      <p>{`${source}`}</p>
-      <p>{`${destination}`}</p>
-      <p>{`${departureDate.$d}`}</p>
+    <div className="mt-16">
       <UpdatedSearchPanel
         trainJourneyDetails={trainJourneyDetails}
         setTrainJourneyDetails={setTrainJourneyDetails}
       />
       <FilterPanel />
-      <TrainsListing trainsListing={trainsListing} />
+      <TrainsListing
+        departureDate={departureDate}
+        trainsListing={trainsListing}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

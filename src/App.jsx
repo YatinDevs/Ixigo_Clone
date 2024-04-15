@@ -33,11 +33,14 @@ function App() {
 
               <Route path="/trains" element={<Trains />} />
               <Route
-                path="/trains/:searchTrains"
+                path="/trains/searchTrains/:departureDate"
                 element={<TrainSearchPage />}
               />
               <Route path="/buses" element={<Buses />} />
-              <Route path="/buses/:searchBus" element={<BusSearchPage />} />
+              <Route
+                path="/buses/searchBus/:departureDate"
+                element={<BusSearchPage />}
+              />
               <Route path="/hotels" element={<Hotels />} />
             </Route>
           </Routes>

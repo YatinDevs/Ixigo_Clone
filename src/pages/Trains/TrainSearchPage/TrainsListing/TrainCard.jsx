@@ -1,7 +1,137 @@
-import React from "react";
+import React, { useState } from "react";
+import ContentWrapper from "../../../../components/ContentWrapper/ContentWrapper";
+import dayjs from "dayjs";
+import Button from "../../../../components/Buttons/Button";
+import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+import TrainAvailabilityCard from "./TrainAvailabilityCard";
 
-function TrainCard() {
-  return <div>TrainCard</div>;
+const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function TrainCard({
+  _id,
+  trainName,
+  trainNumber,
+  source,
+  destination,
+  arrivalTime,
+  departureTime,
+  travelDuration,
+  fare,
+  trainType,
+  coaches,
+  daysOfOperation,
+  departureDate,
+}) {
+  console.log(
+    _id,
+    trainName,
+    trainNumber,
+    source,
+    destination,
+    arrivalTime,
+    departureTime,
+    travelDuration,
+    fare,
+    trainType,
+    coaches,
+    daysOfOperation,
+    departureDate
+  );
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleAvailability = () => {
+    setShowDetails(!showDetails);
+  };
+
+  function getColor(day) {
+    if (daysOfOperation.includes(day)) {
+      return "orange-600";
+    } else {
+      return "slate-200";
+    }
+  }
+
+  const formatDate = (dateString) => {
+    const date = dayjs(dateString);
+    const formattedDate = date.format("ddd D MMM");
+    return formattedDate;
+  };
+  return (
+    <>
+      <ContentWrapper>
+        <div className="mx-2 md:mx-5">
+          <div className="w-full text-xs  md:text-lg flex justify-between items-center  h-[150px] md:h-[200px] bg-white shadow-md border">
+            <div className=" w-[150px] md:w-[450px] flex flex-col gap-2 border-r px-2 md:px-4 ">
+              <p className="text-orange-600 flex flex-col md:flex-row gap-2  md:font-semibold uppercase">
+                <span className="">{trainNumber}</span>
+                <span>{trainName}</span>
+              </p>
+
+              <p className="flex gap-1 md:gap-2 justify-center items-center">
+                <span className="hidden md:block">Runs on:</span>
+                {weekDays.map((day) => (
+                  <span className={`text-${getColor(day)}`} key={day}>
+                    {day[0]}
+                  </span>
+                ))}
+              </p>
+            </div>
+            <div className="flex gap-2  w-full text-xs md:text-lg">
+              <div className="text-xs md:text-lg text-gray-700 gap-1  md:mx-10 justify-center font-thin flex flex-col p-1 md:p-4">
+                <p className="inline-block text-xs md:text-lg text-center">
+                  {source}
+                </p>
+
+                <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
+                  {arrivalTime}
+                </p>
+                <p className=" text-xs md:text-lg text-center">
+                  {formatDate(departureDate)}
+                </p>
+              </div>
+
+              <div className="flex flex-col justify-center  items-center text-center text-xs md:text-lg w-full">
+                <div className="border-b-2 border-slate-500 text-center w-full text-xs md:text-lg text-gray-700 justify-center  font-thin flex flex-col p-1 md:p-4">
+                  {travelDuration} hours
+                </div>
+              </div>
+              <div className="text-xs md:text-lg md:mx-10 text-gray-700 gap-1 justify-center font-thin flex flex-col p-1 md:p-4">
+                <p className="inline-block text-xs md:text-lg text-center">
+                  {destination}
+                </p>
+
+                <p className="inline-block text-black font-semibold text-xs md:text-lg text-center">
+                  {departureTime}
+                </p>
+                <p className="inline-block text-xs md:text-lg text-center">
+                  {formatDate(departureDate)}
+                </p>
+              </div>
+            </div>
+            <div className="md:px-4 flex flex-col justify-center items-center gap-4">
+              <Button
+                type={`Book `}
+                handleClick={handleAvailability}
+                className="bg-orange-500 mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
+              />
+              <div className="font-medium text-center text-xs md:text-lg text-gray-600 cursor-pointer select-none transition-all">
+                {showDetails ? (
+                  <>
+                    <FaAngleUp className="inline" />
+                  </>
+                ) : (
+                  <>
+                    <FaAngleDown className="inline" />
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          {showDetails && <TrainAvailabilityCard />}
+        </div>
+      </ContentWrapper>
+    </>
+  );
 }
 
 export default TrainCard;

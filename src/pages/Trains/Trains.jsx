@@ -5,8 +5,8 @@ import TrainPartners from "./TrainPage/TrainPartners/TrainPartners";
 import { useNavigate } from "react-router-dom";
 
 function Trains() {
-  const [source, setSource] = useState("Delhi Junction");
-  const [destination, setDestination] = useState("Indore Junction");
+  const [source, setSource] = useState("Kalyan Junction");
+  const [destination, setDestination] = useState("Pune Junction");
   const [departureDate, setDepartureDate] = useState(dayjs(Date.now()));
 
   const handleSource = (data) => {
@@ -55,8 +55,12 @@ function Trains() {
         "Source and Destination cannot be the same. Please enter different Junction."
       );
     } else {
-      navigate(`searchTrains`, {
-        state: { source, destination, departureDate },
+      const dateParams = dayjs(departureDate).format(
+        "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+      );
+
+      navigate(`searchTrains/${dateParams}`, {
+        state: { source, destination },
       });
     }
   };

@@ -9,7 +9,7 @@ function SearchTrainInput({ trainProp, onSubmitForm }) {
   const { departureDate, handleDepartureDate } = trainProp;
   const { source, destination, handleDestination, handleSource, handleSwap } =
     trainProp;
-
+  console.log(departureDate);
   return (
     <div className="p-8 md:p-2">
       <form
