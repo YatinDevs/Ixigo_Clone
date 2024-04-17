@@ -14,6 +14,7 @@ import Hotels from "./pages/Hotels/Hotels";
 import BusSearchPage from "./pages/Buses/BusSearchPage/BusSearchPage";
 import TrainBookPage from "./pages/Trains/TrainBookPage/TrainBookPage";
 import BusesBookPage from "./pages/Buses/BusBookPage/BusesBookPage";
+import HotelSearchPage from "./pages/Hotels/HotelSearchPage/HotelSearchPage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               <Route path="/buses/booking" element={<BusesBookPage />} />
 
               <Route path="/hotels" element={<Hotels />} />
+              <Route path="/hotels/:hotelQuery" element={<HotelSearchPage />} />
             </Route>
           </Routes>
         </FlightsDetailProvider>

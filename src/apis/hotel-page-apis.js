@@ -11,3 +11,21 @@ export const fetchOffersDetails = async (type) => {
     throw err;
   }
 };
+
+export async function fetchHotelCities(cityName, jwtToken) {
+  try {
+    const response = await axiosInstance.get(
+      `city?search={"cityState": "${cityName}"}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
