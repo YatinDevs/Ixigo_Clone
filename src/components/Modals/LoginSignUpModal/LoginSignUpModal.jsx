@@ -1,7 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { IoMdCloseCircle } from "react-icons/io";
-import LoginSignUpForm from "../../../pages/LoginSignUp/LoginForm";
 import LoginForm from "../../../pages/LoginSignUp/LoginForm";
 
 function LoginSignUpModal({ toggleLoginModal }) {
