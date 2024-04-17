@@ -42,7 +42,7 @@ function CarouselWhy({ data, loading, endpoint, title }) {
           className="carouselRightNav arrow text-2xl text-black bg-white p-4 w-14 h-14 rounded-full absolute -translate-y-2/4 cursor-pointer z-[2] hidden top-[60%] md:block transition-all hover:scale-110 right-6 shadow-even"
           onClick={() => navigation("right")}
         />
-        <h1 className="text-left text-md md:text-xl  font-semibold pb-[10px] ">
+        <h1 className="text-left text-md md:text-xl  font-semibold  ">
           Why Book Hotels With ixigo?
         </h1>
         {!loading ? (
