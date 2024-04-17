@@ -1,6 +1,5 @@
 import React from "react";
-import { POPULAR_DESTINATIONS } from "../hotel";
-import Carousel from "../components/CarouselOffer";
+import { POPULAR_DESTINATIONS } from "../../../constants";
 import CarouselOffer from "../components/CarouselOffer";
 function PopularDestinations() {
   return (

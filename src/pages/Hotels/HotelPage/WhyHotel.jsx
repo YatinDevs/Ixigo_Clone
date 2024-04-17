@@ -1,5 +1,5 @@
 import React from "react";
-import { HOTEL_OFFERS_CAROUSEL } from "../hotel";
+import { HOTEL_OFFERS_CAROUSEL } from "../../../constants";
 import CarouselWhy from "../components/Carouselwhy";
 function WhyHotel() {
   return (
