@@ -11,6 +11,7 @@ import { FaWifi } from "react-icons/fa";
 import ContentWrapper from "../../../../components/ContentWrapper/ContentWrapper";
 import dayjs from "dayjs";
 import Button from "../../../../components/Buttons/Button";
+import { useNavigate } from "react-router-dom";
 
 const HOTEL_AMENITIES = [
   { name: "Spa", Component: <MdSpa /> },
@@ -66,6 +67,11 @@ function HotelCard({
     e.preventDefault();
     setOpen(!open);
   };
+  const navigate = useNavigate();
+
+  const handleHotelBook = () => {
+    navigate(_id);
+  };
   return (
     <>
       <ContentWrapper>
@@ -112,7 +118,7 @@ function HotelCard({
               <div className="flex items-center  md:justify-start">
                 <Button
                   type={`Book `}
-                  // handleClick={handleBook}
+                  handleClick={handleHotelBook}
                   className="bg-orange-500  rounded-md mx-1 shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
                 />
               </div>
