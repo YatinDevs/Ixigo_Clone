@@ -16,6 +16,8 @@ import TrainBookPage from "./pages/Trains/TrainBookPage/TrainBookPage";
 import BusesBookPage from "./pages/Buses/BusBookPage/BusesBookPage";
 import HotelSearchPage from "./pages/Hotels/HotelSearchPage/HotelSearchPage";
 import HotelDetailsPage from "./pages/Hotels/HotelDetailsPage/HotelDetailsPage";
+import HotelPaymentPage from "./pages/Hotels/HotelPaymentPage/HotelPaymentPage";
+import HotelRoomConfim from "./pages/Hotels/HotelPaymentPage/HotelRoomConfim";
 
 function App() {
   return (
@@ -53,6 +55,10 @@ function App() {
               <Route
                 path="/hotels/:hotelQuery/:hotelId"
                 element={<HotelDetailsPage />}
+              />
+              <Route
+                path="/hotels/:hotelQuery/:hotelId/:roomDetails"
+                element={<HotelRoomConfim />}
               />
             </Route>
           </Routes>

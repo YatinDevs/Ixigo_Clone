@@ -10,7 +10,8 @@ function getRating(rating) {
   if (rating >= 6) return "Good";
   return "Pleasant";
 }
-function OverviewSection({ images, name, location, rating }) {
+function OverviewSection({ images, name, location, rating, rooms }) {
+  console.log(rooms);
   return (
     <div className="" id="overviewSection">
       <ContentWrapper>

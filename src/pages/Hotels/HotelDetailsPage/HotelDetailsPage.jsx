@@ -45,7 +45,7 @@ function HotelDetailsPage() {
         <>
           <DetailsNav />
           <OverviewSection {...hotelDetails} />
-          <RoomListing />
+          <RoomListing {...hotelDetails} />
           <HotelPolicies {...hotelDetails} />
         </>
       )}
