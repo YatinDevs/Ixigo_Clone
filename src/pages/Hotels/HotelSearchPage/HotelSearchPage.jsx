@@ -3,7 +3,7 @@ import UpdatedSearchPanel from "./UpdatedSearchPanel";
 import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import locale from "antd/es/date-picker/locale/en_US";
-import { fetchHotelDetails } from "../../../apis/hotel-page-apis";
+import { fetchHotelListing } from "../../../apis/hotel-page-apis";
 import HotelListing from "./HotelListing/HotelListing";
 
 function HotelSearchPage() {
@@ -39,7 +39,7 @@ function HotelSearchPage() {
 
     setIsLoading(true);
 
-    fetchHotelDetails(
+    fetchHotelListing(
       hotelDetails?.destination,
       sort,
       filter,

@@ -30,7 +30,7 @@ export async function fetchHotelCities(cityName, jwtToken) {
   }
 }
 
-export const fetchHotelDetails = async (
+export const fetchHotelListing = async (
   location,
   sort = {},
   filter = {},
@@ -55,6 +55,20 @@ export const fetchHotelDetails = async (
     return res?.data;
   } catch (error) {
     // console.error("There is Error", error);
+    throw error;
+  }
+};
+
+export const fetchHotelDetails = async (hotelId, jwtToken) => {
+  try {
+    const response = await axiosInstance.get(`/hotel/${hotelId}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
     throw error;
   }
 };
