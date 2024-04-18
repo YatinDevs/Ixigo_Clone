@@ -468,3 +468,19 @@ export const HOTEL_OFFERS_CAROUSEL = [
   { src: hotelOffer6 },
   { src: hotelOffer2 },
 ];
+
+import { MdSpa } from "react-icons/md";
+import { MdRestaurantMenu } from "react-icons/md";
+import { MdLocalBar } from "react-icons/md";
+import { CgGym } from "react-icons/cg";
+import { MdPool } from "react-icons/md";
+import { FaWifi } from "react-icons/fa";
+
+export const HOTEL_AMENITIES = [
+  { name: "Spa", icon: MdSpa },
+  { name: "Free WiFi", icon: FaWifi },
+  { name: "Restaurant", icon: MdRestaurantMenu },
+  { name: "Bar", icon: MdLocalBar },
+  { name: "Gym", icon: CgGym },
+  { name: "Swimming Pool", icon: MdPool },
+];

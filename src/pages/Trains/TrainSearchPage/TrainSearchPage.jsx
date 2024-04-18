@@ -17,9 +17,10 @@ function TrainSearchPage() {
     destination,
     departureDate: dayjs(departureDate),
   });
-  // console.log(trainJourneyDetails);
+  // console.log(departureDate);
+  console.log(trainJourneyDetails);
   const day = dayjs(Date(departureDate)).format("ddd");
-
+  console.log(day);
   const [sort, setSort] = useState({});
   const [fare, setFare] = useState({});
   const [filter, setFilter] = useState({});
