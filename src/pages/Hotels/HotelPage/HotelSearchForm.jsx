@@ -117,9 +117,9 @@ function HotelSearchForm() {
                 format={"DD-MM-YYYY"}
                 value={checkOut}
                 allowClear={false}
-                disabledDate={(current) => {
-                  return current < checkOut;
-                }}
+                disabledDate={(current) =>
+                  current && current < dayjs().add(1, "day").startOf("day")
+                }
                 onChange={(value) => {
                   setCheckOut(value);
                 }}
