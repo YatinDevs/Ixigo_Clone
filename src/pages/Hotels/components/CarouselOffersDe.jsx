@@ -2,9 +2,8 @@ import React, { useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
 import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
-import { useNavigate } from "react-router-dom";
-import dayjs from "dayjs";
-function CarouselOffer({ data, loading, endpoint, title }) {
+
+function CarouselOffersDe({ data, loading, endpoint, title }) {
   // console.log(data);
   const carouselContainer = useRef();
 
@@ -33,7 +32,7 @@ function CarouselOffer({ data, loading, endpoint, title }) {
   };
 
   return (
-    <div className="relative w-full mx-4  ">
+    <div className="relative w-full mx-4 ">
       <ContentWrapper className="relative">
         <IoMdArrowBack
           className="carouselLeftNav arrow text-2xl text-black bg-white p-4 w-14 h-14 rounded-full absolute -translate-y-2/4 cursor-pointer z-[2] hidden top-[60%] md:block transition-all hover:scale-110 left-6 shadow-even"
@@ -43,8 +42,8 @@ function CarouselOffer({ data, loading, endpoint, title }) {
           className="carouselRightNav arrow text-2xl text-black bg-white p-4 w-14 h-14 rounded-full absolute -translate-y-2/4 cursor-pointer z-[2] hidden top-[60%] md:block transition-all hover:scale-110 right-6 shadow-even"
           onClick={() => navigation("right")}
         />
-        <h1 className="text-left text-md md:text-xl  font-semibold ">
-          POPULAR DESTINATIONS{" "}
+        <h1 className="text-left text-md md:text-xl  font-bold pb-[10px] ">
+          Hotel Discount Offers
         </h1>
         {!loading ? (
           <div
@@ -54,24 +53,14 @@ function CarouselOffer({ data, loading, endpoint, title }) {
             {data?.map((data) => {
               return (
                 <div
-                  key={data.city}
-                  className="shadow-md hover:shadow-xl cursor-pointer w-[250px] h-[350px] shrink-0 border-none max-md:w-[150px] max-md:h-[200px] bg-red-200 rounded-2xl"
+                  key={data.src}
+                  className=" w-[300px] h-[180px] shrink-0 border-none max-md:w-[200px] max-md:h-[120px] bg-red-200 rounded-2xl"
                 >
-                  <div
-                    className="rounded-2xl md:w-[250px] h-[350px] max-md:w-[150px] max-md:h-[200px]"
-                    style={{
-                      backgroundImage: `url(${data.img})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
-                    <p className="text-center text-shadow font-bold p-2 text-xs md:text-lg  text-white  text-shadow">
-                      {data.city}
-                    </p>
-                    <p className="text-center  text-shadow font-bold text-xs md:text-lg  text-white  text-shadow">
-                      {data.state}
-                    </p>
+                  <div>
+                    <img
+                      src={data.src}
+                      className="rounded-2xl md:w-[300px] h-[180px] max-md:w-[200px] max-md:h-[120px]"
+                    />
                   </div>
                 </div>
               );
@@ -91,4 +80,4 @@ function CarouselOffer({ data, loading, endpoint, title }) {
   );
 }
 
-export default CarouselOffer;
+export default CarouselOffersDe;

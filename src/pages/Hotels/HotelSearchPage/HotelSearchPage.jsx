@@ -15,7 +15,7 @@ function HotelSearchPage() {
   checkIn = JSON.parse(checkIn);
   checkOut = JSON.parse(checkOut);
   roomNguestsData = JSON.parse(roomNguestsData);
-
+  nights = JSON.parse(nights);
   const [hotelDetails, sethotelDetails] = useState({
     destination,
     checkIn: dayjs(checkIn),

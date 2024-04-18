@@ -24,7 +24,7 @@ function UpdatedSearchPanel({ hotelDetails, sethotelDetails }) {
       "&" +
       JSON.stringify(hotelDetails.roomNguestsData) +
       "&" +
-      hotelDetails.nights;
+      JSON.stringify(hotelDetails.nights);
     console.log(query);
 
     navigate(`/hotels/${query}`);
@@ -113,7 +113,10 @@ function UpdatedSearchPanel({ hotelDetails, sethotelDetails }) {
                   value={updatedInputData?.checkOut}
                   allowClear={false}
                   disabledDate={(current) => {
-                    return current < updatedInputData?.checkOut;
+                    return (
+                      current <
+                      updatedInputData?.checkIn.add(1, "day").startOf("day")
+                    );
                   }}
                   onChange={(value) => {
                     setUpdatedInputData((prev) => {

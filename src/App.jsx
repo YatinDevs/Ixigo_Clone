@@ -60,6 +60,10 @@ function App() {
                 path="/hotels/:hotelQuery/:hotelId/:roomDetails"
                 element={<HotelRoomConfim />}
               />
+              <Route
+                path="/hotels/:hotelQuery/:hotelId/:roomDetails/:priceDetails"
+                element={<HotelPaymentPage />}
+              />
             </Route>
           </Routes>
         </FlightsDetailProvider>

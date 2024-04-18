@@ -63,7 +63,7 @@ function HotelSearchForm() {
       "&" +
       JSON.stringify(roomNguestsData) +
       "&" +
-      nights;
+      JSON.stringify(nights);
     console.log(query);
     navigate(`/hotels/${query}`);
   }
@@ -118,7 +118,7 @@ function HotelSearchForm() {
                 value={checkOut}
                 allowClear={false}
                 disabledDate={(current) =>
-                  current && current < dayjs().add(1, "day").startOf("day")
+                  current && current < checkIn.add(1, "day").startOf("day")
                 }
                 onChange={(value) => {
                   setCheckOut(value);

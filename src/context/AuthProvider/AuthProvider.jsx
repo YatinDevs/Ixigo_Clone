@@ -7,7 +7,7 @@ const AuthContext = createContext();
 
 // Setting JWT if exists
 const JWT = JSON.parse(localStorage.getItem("authToken"));
-const user = JSON.parse(localStorage.getItem("userDetails")) || {};
+const userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
 
 // AuthProvider component
 export default function AuthProvider({ children }) {
@@ -112,7 +112,7 @@ export default function AuthProvider({ children }) {
     setRedirect,
     redirectTo,
     setRedirectTo,
-    user,
+    userDetails,
   };
   return (
     <AuthContext.Provider value={provider}>{children}</AuthContext.Provider>
