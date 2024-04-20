@@ -21,8 +21,8 @@ function AirlineName({
   duration,
   ticketPrice,
 }) {
-  const key = flightID.slice(0, 2).toUpperCase();
-  const flightsID = flightID.slice(13, 16).toUpperCase();
+  const key = flightID?.slice(0, 2).toUpperCase();
+  const flightsID = flightID?.slice(13, 16).toUpperCase();
   const airlines = AIRLINES_INFO.find((airline) => airline.key === key);
   let logo;
   switch (key) {
@@ -89,7 +89,7 @@ const FlightsBaggage = ({ ...props }) => {
   } = props;
   return (
     <div className="w-full">
-      <div className="bg-gray-50 border border-gray-200 rounded-lg">
+      <div className="bg-gray-100 border border-gray-200 rounded-lg">
         <div>
           <AirlineName {...props} />
         </div>

@@ -33,7 +33,7 @@ function AirlineDetails({
   duration,
   ticketPrice,
 }) {
-  const key = flightID.slice(0, 2).toUpperCase();
+  const key = flightID?.slice(0, 2).toUpperCase();
   const airlines = AIRLINES_INFO.find((airline) => airline.key === key);
   let logo;
   switch (key) {
@@ -57,7 +57,7 @@ function AirlineDetails({
   }
 
   return (
-    <div className="text-xs md:text-lg  text-black py-1 gap-2 font-thin flex flex-row ">
+    <div className="text-xs md:text-lg bg-gray-100 border   text-black py-1 gap-2 font-thin flex flex-row ">
       <div className="">
         {logo && (
           <img
@@ -89,14 +89,10 @@ const AirportDetails = (iataCode) => {
   const airport = AIRPORTS.find((airport) => airport.iata_code === iataCode);
 
   if (!airport) {
-    return <div>Unknown Airport</div>;
+    return <p>Unknown Airport</p>;
   }
 
-  return (
-    <div>
-      <p className="text-sm text-center">{airport.name}</p>
-    </div>
-  );
+  return <p className="text-sm text-center">{airport.name}</p>;
 };
 
 function FlightsDetails({ ...props }) {

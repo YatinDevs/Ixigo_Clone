@@ -43,3 +43,17 @@ export const fetchFlightDetails = async (
     throw err;
   }
 };
+
+export const fetchBookedFlightDetails = async (flightId, jwtToken) => {
+  try {
+    const response = await axiosInstance.get(`/flight/${flightId}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};

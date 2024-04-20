@@ -16,56 +16,66 @@ import TrainBookPage from "./pages/Trains/TrainBookPage/TrainBookPage";
 import BusesBookPage from "./pages/Buses/BusBookPage/BusesBookPage";
 import HotelSearchPage from "./pages/Hotels/HotelSearchPage/HotelSearchPage";
 import HotelDetailsPage from "./pages/Hotels/HotelDetailsPage/HotelDetailsPage";
-import HotelPaymentPage from "./pages/Hotels/HotelPaymentPage/HotelPaymentPage";
 import HotelRoomConfim from "./pages/Hotels/HotelPaymentPage/HotelRoomConfim";
+import PaymentProvider from "./context/PaymentProvider";
+import Payment from "./pages/Payment/Payment";
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <FlightsDetailProvider>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Flights />} />
-              <Route path="/flight" element={<Flights />} />
-              <Route
-                path="/flight/:searchQuery"
-                element={<FlightSearchPage />}
-              />
-              <Route
-                path="/flight/:searchQuery/:bookingInfo"
-                element={<FlightBookingPage />}
-              />
+          <PaymentProvider>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Flights />} />
+                <Route path="/flight" element={<Flights />} />
+                <Route
+                  path="/flight/:searchQuery"
+                  element={<FlightSearchPage />}
+                />
+                <Route
+                  path="/flight/:searchQuery/:bookingInfo"
+                  element={<FlightBookingPage />}
+                />
+                <Route
+                  path="/flight/:searchQuery/:bookingInfo/:priceDetails"
+                  element={<Payment />}
+                />
 
-              <Route path="/trains" element={<Trains />} />
-              <Route
-                path="/trains/searchTrains/:departureDate"
-                element={<TrainSearchPage />}
-              />
-              <Route path="/trains/booking" element={<TrainBookPage />} />
-              <Route path="/buses" element={<Buses />} />
-              <Route
-                path="/buses/searchBus/:departureDate"
-                element={<BusSearchPage />}
-              />
-              <Route path="/buses/booking" element={<BusesBookPage />} />
+                <Route path="/trains" element={<Trains />} />
+                <Route
+                  path="/trains/searchTrains/:departureDate"
+                  element={<TrainSearchPage />}
+                />
+                <Route path="/trains/booking" element={<TrainBookPage />} />
+                <Route path="/buses" element={<Buses />} />
+                <Route
+                  path="/buses/searchBus/:departureDate"
+                  element={<BusSearchPage />}
+                />
+                <Route path="/buses/booking" element={<BusesBookPage />} />
 
-              <Route path="/hotels" element={<Hotels />} />
-              <Route path="/hotels/:hotelQuery" element={<HotelSearchPage />} />
-              <Route
-                path="/hotels/:hotelQuery/:hotelId"
-                element={<HotelDetailsPage />}
-              />
-              <Route
-                path="/hotels/:hotelQuery/:hotelId/:roomDetails"
-                element={<HotelRoomConfim />}
-              />
-              <Route
-                path="/hotels/:hotelQuery/:hotelId/:roomDetails/:priceDetails"
-                element={<HotelPaymentPage />}
-              />
-            </Route>
-          </Routes>
+                <Route path="/hotels" element={<Hotels />} />
+                <Route
+                  path="/hotels/:hotelQuery"
+                  element={<HotelSearchPage />}
+                />
+                <Route
+                  path="/hotels/:hotelQuery/:hotelId"
+                  element={<HotelDetailsPage />}
+                />
+                <Route
+                  path="/hotels/:hotelQuery/:hotelId/:roomDetails"
+                  element={<HotelRoomConfim />}
+                />
+                <Route
+                  path="/hotels/:hotelQuery/:hotelId/:roomDetails/:priceDetails"
+                  element={<Payment />}
+                />
+              </Route>
+            </Routes>
+          </PaymentProvider>
         </FlightsDetailProvider>
       </AuthProvider>
     </Router>

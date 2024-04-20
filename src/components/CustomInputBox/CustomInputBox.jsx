@@ -8,7 +8,7 @@ const CustomInputBox = ({
   placeholder,
   id,
   type,
-  handleInput,
+  onChange,
   value,
   error,
   className,
@@ -27,9 +27,7 @@ const CustomInputBox = ({
         className={`w-full relative rounded-lg  focus:outline-none hover:border-orange-500 border-2 border-solid   focus:border-orange-500 font-medium text-xs md:text-lg leading-7 text-[rgb(20, 24, 35)] py-2 px-4 md:py-4 md:px-4 ${className} ${
           error ? "border-red-500" : "border-slate-200 hover:border-slate-500"
         }`}
-        onChange={(e) => {
-          handleInput(e.target.value);
-        }}
+        onChange={onChange}
       />
       <label
         htmlFor={"id"}

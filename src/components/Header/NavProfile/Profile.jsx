@@ -5,7 +5,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { Modal } from "antd";
 import "./style.css";
 function Profile({ toggleLoginModal, isLoggedIn }) {
-  const { user, logOut } = useAuthContext();
+  const { userDetails, logOut } = useAuthContext();
 
   const handleLogout = () => {
     Modal.confirm({
@@ -41,13 +41,13 @@ function Profile({ toggleLoginModal, isLoggedIn }) {
           <div className="user relative rounded-lg truncate  flex flex-auto items-center w-full h-11 px-[10px] gap-2 mr-8 cursor-pointer  overflow-visible">
             <span className="logo-profile inline-block w-8 h-8 logo-nav mr-2"></span>
             <span className="text-orange-500 font-medium  text-xs md:text-lg text-ellipsis text-start">
-              Hey, {user?.name.split(" ")[0] || "User"}
+              Hey, {userDetails?.name.split(" ")[0] || "User"}
             </span>
           </div>
-          <div className=" flex">
+          <div className=" flex relative">
             <button
               onClick={handleLogout}
-              className="logout-button absolute top-4 right-3 z-10 flex justify-center font-medium items-center w-8 h-8 bg-white text-blue-500"
+              className="logout-button absolute top-1 right-3 z-10 flex justify-center font-medium items-center w-8 h-8 bg-white text-blue-500"
             >
               <IoMdLogOut className="bg-transparent" />
             </button>
