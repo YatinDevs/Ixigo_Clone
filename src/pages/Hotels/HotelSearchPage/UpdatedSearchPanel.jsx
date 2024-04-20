@@ -56,7 +56,7 @@ function UpdatedSearchPanel({ hotelDetails, sethotelDetails }) {
     }
   };
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white mt-32 md:mt-16">
       <ContentWrapper>
         <form
           onSubmit={(e) => {

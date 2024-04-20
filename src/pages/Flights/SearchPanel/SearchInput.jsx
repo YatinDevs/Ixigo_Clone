@@ -60,7 +60,7 @@ function SearchInput() {
     const encodedPath = btoa(
       `${source_location}-${destination_location}--${date_of_journey}--${adult}-${child}-${infant}`
     );
-
+    console.log(source_location, destination_location);
     if (pathname.includes("flight")) {
       navigate(`air-${encodedPath}`);
     } else {

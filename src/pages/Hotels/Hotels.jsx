@@ -6,7 +6,7 @@ import HotelOffers from "./HotelPage/HotelOffers";
 
 function Hotels() {
   return (
-    <div className="mt-16">
+    <div className="mt-32 md:mt-16">
       <SearchPanel />
 
       <WhyHotel />

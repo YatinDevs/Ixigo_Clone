@@ -71,7 +71,7 @@ function FlightBookingPage() {
     <>
       <ContentWrapper>
         {" "}
-        <div className=" mt-20  rounded-md my-2 mx-5">
+        <div className="mt-36 md:mt-20  rounded-md my-2 mx-5">
           <UserDetails />
         </div>
         <div className=" grid grid-cols-1  md:grid-cols-3">

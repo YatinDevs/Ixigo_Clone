@@ -40,7 +40,7 @@ function HotelDetailsPage() {
   }, []);
 
   return (
-    <div className="mt-16 scroll-smooth">
+    <div className=" scroll-smooth mt-32 md:mt-16">
       {hotelDetails && (
         <>
           <DetailsNav />

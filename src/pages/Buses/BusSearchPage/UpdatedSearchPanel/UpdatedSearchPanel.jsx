@@ -38,7 +38,7 @@ function UpdatedSearchPanel({ busJourneyDetails, setBusJourneyDetails }) {
     }, 200);
   };
   return (
-    <div className="searchpanel">
+    <div className="searchpanel mt-32 md:mt-16">
       <ContentWrapper>
         <div className="border-none p-[20px] gap-2 md:gap-10 flex md:flex-row flex-col rounded-[20px] ">
           <div className="flex flex-1 gap-2 md:gap-4 flex-col md:flex-row justify-center items-center">

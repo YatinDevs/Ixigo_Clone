@@ -48,6 +48,7 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
   const regex = /\((.*?)\)/;
 
   function handleSearch() {
+    console.log(inputSourceValue, inputDestValue);
     const encodedPath = btoa(
       `${inputSourceValue?.match(regex)[1]}-${
         inputDestValue?.match(regex)[1]
@@ -74,7 +75,6 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
               selectedValue={inputSourceValue}
               setInputValue={setInputSourceValue}
               handleValue={(value) => {
-                console.log(value, `setting`);
                 setInputSourceValue(value);
               }}
             />
@@ -94,7 +94,6 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
               setInputValue={setInputDestValue}
               selectedValue={inputDestValue}
               handleValue={(value) => {
-                console.log(value, `setting`);
                 setInputDestValue(value);
               }}
               type="text"

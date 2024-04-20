@@ -49,7 +49,7 @@ function TrainSearchPage() {
 
   // console.log(trainsListing);
   return (
-    <div className="mt-16">
+    <div className="mt-32 md:mt-16">
       <UpdatedSearchPanel
         trainJourneyDetails={trainJourneyDetails}
         setTrainJourneyDetails={setTrainJourneyDetails}

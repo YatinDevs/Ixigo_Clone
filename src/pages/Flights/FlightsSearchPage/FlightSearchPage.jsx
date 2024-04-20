@@ -23,7 +23,7 @@ function FlightSearchPage() {
   const [location, date, counts] = decodedPath?.split("--");
   // console.log(`L: ${location} ,D: ${date},C: ${counts}`);
   const [source, destination] = location.split("-");
-  // console.log(`S: ${source} ,D: ${destination}`);
+  console.log(`S: ${source} ,D: ${destination}`);
   const day = dayjs(date).format("ddd");
   // console.log(day);
 
@@ -77,7 +77,7 @@ function FlightSearchPage() {
     flightsDetails;
 
   return (
-    <div className="mt-16">
+    <div className=" mt-32 md:t-16">
       <UpdatedSearchPanel
         flightsDetails={flightsDetails}
         dispatchFlightsDetails={dispatchFlightsDetails}

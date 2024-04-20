@@ -8,7 +8,7 @@ import Advertisement from "./Advertisement/Advertisement";
 
 function Flights() {
   return (
-    <div className="">
+    <div className="mt-32 md:mt-0">
       <HeroBanner />
       {/* <SearchPanel /> */}
       {/* <Advertisement /> */}

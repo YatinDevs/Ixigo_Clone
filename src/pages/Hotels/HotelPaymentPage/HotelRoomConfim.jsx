@@ -44,7 +44,7 @@ function HotelRoomConfim() {
   console.log(roomDetails, hotelDetails, hotelId);
 
   return (
-    <div className="mt-20 md:mt-28">
+    <div className="mt-36 md:mt-28">
       <ContentWrapper>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-2 md:mx-auto justify-around m-5 ">
           <div className="col-span-1 p-5  bg-white rounded-md border">
