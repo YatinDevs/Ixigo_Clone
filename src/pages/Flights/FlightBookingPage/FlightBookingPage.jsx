@@ -70,11 +70,7 @@ function FlightBookingPage() {
   return (
     <>
       <ContentWrapper>
-        {" "}
-        <div className="mt-36 md:mt-20  rounded-md my-2 mx-5">
-          <UserDetails />
-        </div>
-        <div className=" grid grid-cols-1  md:grid-cols-3">
+        <div className="mt-36 md:mt-20   grid grid-cols-1  md:grid-cols-3">
           <div className="col-span-2 border rounded-md my-5 mx-5">
             <div className="m-4">
               <FlightsDetails {...bookedFlightDetails} />
@@ -133,7 +129,10 @@ function FlightBookingPage() {
                 />
               </div>
             </div>
-          </div>
+          </div>{" "}
+        </div>
+        <div className="rounded-md my-2 mx-5">
+          <UserDetails />
         </div>
       </ContentWrapper>
     </>
