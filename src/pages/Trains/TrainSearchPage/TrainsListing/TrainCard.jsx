@@ -43,10 +43,10 @@ function TrainCard({
     return formattedDate;
   };
 
-  const handleBooking = (fare) => {
+  const handleBooking = (coachType, fare) => {
     console.log("booked");
     navigate(`/trains/booking`, {
-      state: { trainId: _id, fare, departureDate },
+      state: { trainId: _id, fare, departureDate, coachType },
     });
   };
   return (
@@ -62,8 +62,8 @@ function TrainCard({
 
               <p className="flex gap-1 md:gap-2 justify-center items-center">
                 <span className="hidden md:block">Runs on:</span>
-                {weekDays.map((day) => (
-                  <span className={`text-${getColor(day)}`} key={day}>
+                {weekDays.map((day, index) => (
+                  <span key={index} className={`text-${getColor(day)}`}>
                     {day[0]}
                   </span>
                 ))}
@@ -125,38 +125,40 @@ function TrainCard({
           {showDetails && (
             <div className=" flex overflow-x-auto  gap-3 py-3 text-xs md:text-lg border-b shadow-sm p-2">
               {coaches?.map((coach) => (
-                <>
-                  <div
-                    onClick={() => {
-                      handleBooking(getFare(coach.coachType, fare));
-                    }}
-                    className="h-25 md:h-fit shadow-md  flex flex-col gap-1 rounded-md border bg-green-50"
-                  >
-                    <div className="pt-2 px-2">
-                      <div className="flex gap-2 text-xs md:text-lg  justify-center items-center">
-                        <p className="font-semibold">{coach.coachType}</p>
-                        <div className="h-1 w-1  bg-black rounded flex justify-center self-center items-center"></div>
-                        <p className="">
-                          <span>&#x20B9;</span>
-                          {getFare(coach.coachType, fare)}
-                        </p>
-                      </div>
-                      <div className="flex justify-center">
-                        <p className="text-center text-green-700">
-                          AVL {coach.numberOfSeats}
-                        </p>
-                      </div>
-                      <p className="text-xs text-left">8 min ago</p>
+                <div
+                  key={coach._id}
+                  onClick={() => {
+                    handleBooking(
+                      coach.coachType,
+                      getFare(coach.coachType, fare)
+                    );
+                  }}
+                  className="h-25 md:h-fit shadow-md  flex flex-col gap-1 rounded-md border bg-green-50"
+                >
+                  <div className="pt-2 px-2">
+                    <div className="flex gap-2 text-xs md:text-lg  justify-center items-center">
+                      <p className="font-semibold">{coach.coachType}</p>
+                      <div className="h-1 w-1  bg-black rounded flex justify-center self-center items-center"></div>
+                      <p className="">
+                        <span>&#x20B9;</span>
+                        {getFare(coach.coachType, fare)}
+                      </p>
                     </div>
-                    <div className=" ">
-                      <Button
-                        type={`Book `}
-                        handleClick={handleAvailability}
-                        className="bg-orange-500 rounded-b-md  w-full shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
-                      />
+                    <div className="flex justify-center">
+                      <p className="text-center text-green-700">
+                        AVL {coach.numberOfSeats}
+                      </p>
                     </div>
+                    <p className="text-xs text-left">8 min ago</p>
                   </div>
-                </>
+                  <div className=" ">
+                    <Button
+                      type={`Book `}
+                      handleClick={handleAvailability}
+                      className="bg-orange-500 rounded-b-md  w-full shadow-md text-white hover:bg-orange-600 cursor-pointer py-1 md:py-2 px-2  md:px-6 "
+                    />
+                  </div>
+                </div>
               ))}
             </div>
           )}

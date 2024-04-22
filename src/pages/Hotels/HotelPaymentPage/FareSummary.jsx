@@ -21,9 +21,9 @@ function FareSummary({ hotelDetails, roomDetails, hotelReservations }) {
   const navigate = useNavigate();
 
   const handlePayment = (e) => {
-    const encodedPrice = btoa(JSON.stringify(priceDetails));
+    const encodedPrice = btoa(JSON.stringify(priceDetails.netCost));
     setTimeout(() => {
-      navigate(`payment?${encodedPrice}`);
+      navigate(`payment--${encodedPrice}`);
     }, 1000);
   };
   return (

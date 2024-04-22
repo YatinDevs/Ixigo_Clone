@@ -26,3 +26,17 @@ export const fetchTrainsListing = async (
     throw error;
   }
 };
+
+export const fetchBookedTrainDetails = async (trainId, jwtToken) => {
+  try {
+    const response = await axiosInstance.get(`/train/${trainId}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};

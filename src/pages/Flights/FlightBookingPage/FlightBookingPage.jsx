@@ -64,7 +64,7 @@ function FlightBookingPage() {
   const handlePayment = (e) => {
     const encodedPrice = btoa(JSON.stringify(finalTicketPrice));
     setTimeout(() => {
-      navigate(`payment?${encodedPrice}`);
+      navigate(`payment--${encodedPrice}`);
     }, 200);
   };
   return (

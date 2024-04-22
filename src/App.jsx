@@ -49,12 +49,19 @@ function App() {
                   element={<TrainSearchPage />}
                 />
                 <Route path="/trains/booking" element={<TrainBookPage />} />
+                <Route
+                  path="/trains/booking/:priceDetails"
+                  element={<Payment />}
+                />
                 <Route path="/buses" element={<Buses />} />
                 <Route
                   path="/buses/searchBus/:departureDate"
                   element={<BusSearchPage />}
                 />
-                <Route path="/buses/booking" element={<BusesBookPage />} />
+                <Route
+                  path="/buses/searchBus/:departureDate/:priceDetails"
+                  element={<Payment />}
+                />
 
                 <Route path="/hotels" element={<Hotels />} />
                 <Route

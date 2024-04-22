@@ -100,10 +100,13 @@ function BusCard({
 
   const totalFare = (count > 0 ? count : 1) * fare;
   const navigate = useNavigate();
-  const handleProceedPayment = (fare) => {
-    navigate(`/buses/booking`, {
-      state: { busId: _id, fare, departureDate },
-    });
+
+  const handlePayment = (e) => {
+    e.preventDefault();
+    const encodedPrice = btoa(JSON.stringify(totalFare));
+    setTimeout(() => {
+      navigate(`payment--${encodedPrice}`);
+    }, 500);
   };
   return (
     <>
@@ -307,9 +310,7 @@ function BusCard({
 
               <div className="flex w-full justify-end my-2 select-none ">
                 <button
-                  onClick={() => {
-                    handleProceedPayment(totalFare);
-                  }}
+                  onClick={handlePayment}
                   className="bg-orange-500  px-6 py-2 mr-4 font-medium text-white text-xs md:text-lg   active:bg-blue-700 hover:bg-blue-700 hover:text-slate-100 active:text-slate-100  transition-all"
                 >
                   Proceed to Payment
