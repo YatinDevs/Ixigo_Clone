@@ -33,12 +33,14 @@ function FlightSearchPage() {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState({});
   const [filter, setFilter] = useState({});
+  const [results, setResults] = useState(0);
+  const [filterChange, setFilterChange] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
 
   const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
-  const [flightsResult, setFlightsResult] = useState([]);
-  // console.log(`flightsResult`, flightsResult);
+  const [flightsListingResult, setflightsListingResult] = useState([]);
+  // console.log(`flightsListingResult`, flightsListingResult);
 
   useEffect(() => {
     setIsLoading(true);
@@ -47,10 +49,12 @@ function FlightSearchPage() {
       (data) => {
         setIsLoading(false);
         // console.log(data, `data fetched`);
-        setFlightsResult(data?.data.flights);
+        setflightsListingResult(data?.data.flights);
+        console.log(data);
+        setTotal(data?.totalResults);
       }
     );
-  }, [source, destination, day, sort, page, filter]);
+  }, [source, destination, day, sort, page, filter, filterChange]);
 
   useEffect(() => {
     dispatchFlightsDetails({
@@ -76,16 +80,70 @@ function FlightSearchPage() {
   const { source_location, destination_location, date_of_journey } =
     flightsDetails;
 
+  const handleFilter = (type, value) => {
+    setFilterChange((prev) => !prev);
+
+    if (type == "stops") {
+      setFilter((prev) => {
+        if (value.length > 0) {
+          prev["stops"] = value;
+        } else {
+          delete prev["stops"];
+        }
+        return prev;
+      });
+    }
+
+    if (type == "duration") {
+      setFilter((prev) => {
+        if (value.length > 0) {
+          prev["duration"] = value;
+        } else {
+          delete prev["duration"];
+        }
+        return prev;
+      });
+    }
+
+    if (type == "price") {
+      setFilter((prev) => {
+        if (value.length > 0) {
+          prev["ticketPrice"] = {
+            $gte: parseInt(value[0]),
+            $lte: parseInt(value[1]),
+          };
+        }
+        return prev;
+      });
+    }
+
+    setPage(1);
+  };
+
   return (
-    <div className=" mt-32 md:t-16">
+    <div className=" mt-32 md:mt-16">
       <UpdatedSearchPanel
         flightsDetails={flightsDetails}
         dispatchFlightsDetails={dispatchFlightsDetails}
-        flightsResult={flightsResult}
-        setFlightsResult={setFlightsResult}
+        flightsListingResult={flightsListingResult}
+        setflightsListingResult={setflightsListingResult}
       />
-      <FilterPanel />
-      <FlightsListing flightsResult={flightsResult} isLoading={isLoading} />
+      <FilterPanel
+        flightsListingResult={flightsListingResult}
+        setflightsListingResult={setflightsListingResult}
+        handleFilter={handleFilter}
+        filter={filter}
+        results={results}
+        total={total}
+        setSortValue={(value) => {
+          // console.log({ value });
+          setSort(JSON.parse(value));
+        }}
+      />
+      <FlightsListing
+        flightsListingResult={flightsListingResult}
+        isLoading={isLoading}
+      />
       <Pagination
         className="my-4 flex items-center justify-center"
         total={total}

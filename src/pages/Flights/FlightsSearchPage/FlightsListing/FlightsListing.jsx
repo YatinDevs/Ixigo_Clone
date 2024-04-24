@@ -2,12 +2,12 @@ import React from "react";
 import FlightCard from "./FlightCard";
 import { Skeleton } from "antd";
 
-function FlightsListing({ flightsResult, isLoading }) {
+function FlightsListing({ flightsListingResult, isLoading }) {
   return (
     <div id="flightsListContainer" className=" flex flex-col gap-2">
       {!isLoading ? (
-        flightsResult.length !== 0 ? (
-          flightsResult?.map((details) => (
+        flightsListingResult.length !== 0 ? (
+          flightsListingResult?.map((details) => (
             <FlightCard {...details} key={details._id} />
           ))
         ) : (
@@ -24,7 +24,7 @@ function FlightsListing({ flightsResult, isLoading }) {
           />
         ))
       )}
-      {flightsResult?.length !== 0 && (
+      {flightsListingResult?.length !== 0 && (
         <span className="text-2xl font-normal text-slate-300 py-4 "></span>
       )}
     </div>
