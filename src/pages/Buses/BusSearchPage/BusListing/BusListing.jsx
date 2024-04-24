@@ -4,7 +4,7 @@ import { Skeleton } from "antd";
 
 function BusListing({ busListing, isLoading, departureDate }) {
   return (
-    <div id="busListContainer" className=" flex flex-col gap-4">
+    <div id="busListContainer" className=" md:m-2 flex flex-col gap-4">
       {!isLoading ? (
         busListing?.length !== 0 ? (
           busListing?.map((details) => (
