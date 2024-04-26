@@ -6,7 +6,7 @@ import { Modal } from "antd";
 import "./style.css";
 function Profile({ toggleLoginModal, isLoggedIn }) {
   const { userDetails, logOut } = useAuthContext();
-
+  console.log(userDetails);
   const handleLogout = () => {
     Modal.confirm({
       title: "Confirm Logout",
@@ -41,7 +41,7 @@ function Profile({ toggleLoginModal, isLoggedIn }) {
           <div className="user relative rounded-lg truncate  flex flex-auto items-center w-full h-11 px-[10px] gap-2 mr-8 cursor-pointer  overflow-visible">
             <span className="logo-profile inline-block w-8 h-8 logo-nav mr-2"></span>
             <span className="text-orange-500 font-medium  text-xs md:text-lg text-ellipsis text-start">
-              Hey, {userDetails?.name.split(" ")[0] || "User"}
+              Hey, {userDetails?.name || "User"}
             </span>
           </div>
           <div className=" flex relative">

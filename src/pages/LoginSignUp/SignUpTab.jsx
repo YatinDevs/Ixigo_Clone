@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
 import { BiSolidError } from "react-icons/bi";
 import { useAuthContext } from "../../context/AuthProvider/AuthProvider";
-import InputBox from "../../components/InputBox/InputBox";
-import Button from "../../components/Buttons/Button";
 import InputBoxRef from "../../components/InputBox/InputBoxRef";
 
 function SignUpTab() {
@@ -21,32 +19,21 @@ function SignUpTab() {
     const confirmPassword = signupConfirmPasswordRef.current.value;
 
     // Validation
-    if (name === "") {
-      setErrorMessage("Please Enter Your Name!");
-      return;
-    }
-    if (email === "") {
-      setErrorMessage("Please Enter Email!");
-      return;
-    }
-    if (password === "") {
-      setErrorMessage("Please Enter Password!");
-      return;
-    }
-    if (confirmPassword === "") {
-      setErrorMessage("Please Re-enter Password!");
+    if (![name, email, password, confirmPassword].every(Boolean)) {
+      setErrorMessage("Please fill in all fields!");
       return;
     }
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords Don't Match!");
+      setErrorMessage("Passwords don't match!");
       return;
     }
 
     // Sign up
     signUp({ name, email, password }).then((res) => {
       if (res && res.message === "User already exists") {
-        setErrorMessage("Account already exists on this email! Please Login.");
-        return;
+        setErrorMessage(
+          "An account already exists with this email. Please log in."
+        );
       } else {
         setShowLoginSignupForm(false);
       }
@@ -59,7 +46,7 @@ function SignUpTab() {
 
   return (
     <form className="flex flex-col md:gap-6" onSubmit={handleSignUpButton}>
-      <h2 className="text-xs md:text-2xl font-thin  text-gray-800">
+      <h2 className="text-xs md:text-2xl font-thin text-gray-800">
         Sign up to ixigo
       </h2>
       <InputBoxRef
@@ -90,8 +77,7 @@ function SignUpTab() {
       />
       <button
         type="submit"
-        onClick={handleSignUpButton}
-        className="bg-orange-500 mx-16 my-5 md:mx-0  text-xs md:text-lg py-1 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
+        className="bg-orange-500 mx-16 my-5 md:mx-0 text-xs md:text-lg py-1 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
       >
         SIGN UP
       </button>

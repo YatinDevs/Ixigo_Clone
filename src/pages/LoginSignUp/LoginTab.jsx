@@ -20,11 +20,11 @@ function LogInTab() {
     const password = loginPasswordRef.current.value;
 
     // Validation
-    if (email === "") {
+    if (email.trim() === "") {
       setErrorMessage("Please Enter Email!");
       return;
     }
-    if (password === "") {
+    if (password.trim() === "") {
       setErrorMessage("Please Enter Password!");
       return;
     }
@@ -47,7 +47,7 @@ function LogInTab() {
 
   return (
     <form className="flex flex-col gap-1 md:gap-6" onSubmit={handleLoginButton}>
-      <h2 className="text-xs md:text-2xl font-thin  text-gray-800">
+      <h2 className="text-xs md:text-2xl font-thin text-gray-800">
         Log in to ixigo
       </h2>
       <InputBoxRef
@@ -69,8 +69,7 @@ function LogInTab() {
       />
       <button
         type="submit"
-        onClick={handleLoginButton}
-        className="bg-orange-500 mx-16 my-5 md:mx-0  text-xs md:text-lg py-1 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
+        className="bg-orange-500 mx-16 my-5 md:mx-0 text-xs md:text-lg py-1 md:py-2 hover:bg-orange-600 text-white rounded-lg hover:shadow-md"
       >
         LOG IN
       </button>

@@ -9,7 +9,16 @@ import SearchButton from "../../../../components/Buttons/SearchButton";
 import "./style.css";
 import ContentWrapper from "../../../../components/ContentWrapper/ContentWrapper";
 import { useFlightsContext } from "../../../../context/FlightsDetailProvider";
-function UpdatedSearchPanel(flightsResult, setFlightsResult) {
+import { DatePicker } from "antd";
+import locale from "antd/es/date-picker/locale/en_US";
+function UpdatedSearchPanel({
+  flightsDetails,
+  flightsListingResult,
+  dispatchFlightsDetails,
+  setflightsListingResult,
+}) {
+  const { journeyDetails: details } = useFlightsContext();
+
   // Extracting data from params
   const { searchQuery } = useParams();
   //   console.log(useParams());
@@ -24,13 +33,33 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
   const [source, destination] = location.split("-");
   // console.log(`S: ${source} ,D: ${destination}`);
 
-  const [adult, child, infant] = counts?.split("-");
+  let [adult, child, infant] = counts?.split("-");
   // console.log(`a:${adult},c: ${child},i: ${infant}`);
+  adult *= 1;
+  child *= 1;
+  infant *= 1;
+  console.log({ adult, child, infant });
+  const {
+    source_location,
+    destination_location,
+    oneway,
+    travel_details,
+    date_of_journey,
+  } = flightsDetails;
+
+  useEffect(() => {
+    dispatchFlightsDetails({
+      type: "set_travel_details_numbers",
+      payload: { value: { adult, child, infant } },
+    });
+  }, []);
 
   // To Make update Search
   const [inputSourceValue, setInputSourceValue] = useState(source);
   const [inputDestValue, setInputDestValue] = useState(destination);
   const [selectedDate, setSelectedDate] = useState(date);
+  const [pageLoad, setPageLoad] = useState(false);
+
   // const [travelDetails, setTravelDetails] = useState({
   //   numbers: {
   //     adult: parseInt(adult),
@@ -39,8 +68,6 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
   //   },
   //   class: "economy",
   // });
-  const { flightsDetails, dispatchFlightsDetails } = useFlightsContext();
-  const { travel_details } = flightsDetails;
 
   // console.log(travel_details, `details travel`);
   const navigate = useNavigate();
@@ -48,13 +75,10 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
   const regex = /\((.*?)\)/;
 
   function handleSearch() {
-    console.log(inputSourceValue, inputDestValue);
+    setPageLoad(true);
+
     const encodedPath = btoa(
-      `${inputSourceValue?.match(regex)[1]}-${
-        inputDestValue?.match(regex)[1]
-      }--${selectedDate}--${travel_details.numbers.adult}-${
-        travel_details.numbers.child
-      }-${travel_details.numbers.infant}`
+      `${source_location}-${destination_location}--${date_of_journey}--${travel_details.numbers.adult}-${travel_details.numbers.child}-${travel_details.numbers.infant}`
     );
 
     navigate(`/flight/air-${encodedPath}`);
@@ -69,21 +93,24 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
               type="text"
               placeholder="Enter city or airport"
               label="From"
-              id="from_location"
+              id="source_location"
               className="w-full text-white"
               inputValue={inputSourceValue}
               selectedValue={inputSourceValue}
               setInputValue={setInputSourceValue}
               handleValue={(value) => {
-                setInputSourceValue(value);
+                dispatchFlightsDetails({
+                  type: "set_source_location",
+                  payload: { value },
+                });
               }}
             />
             <SwapButton
               handleSwap={(e) => {
                 e.preventDefault();
-                const temp = inputSourceValue;
-                setInputSourceValue(inputDestValue);
-                setInputDestValue(temp);
+                const temp = inputDestValue;
+                setInputDestValue(inputSourceValue);
+                setInputSourceValue(temp);
                 dispatchFlightsDetails({ type: "swap_location" });
               }}
               className="self-center swap-button flex items-center justify-center bg-transparent cursor-pointer  z-[1] rounded-xl  shadow-md w-9 h-9 m-[-20px] "
@@ -91,26 +118,43 @@ function UpdatedSearchPanel(flightsResult, setFlightsResult) {
             <InputBox
               className="w-full text-white"
               inputValue={inputDestValue}
+              id="destination_location"
               setInputValue={setInputDestValue}
-              selectedValue={inputDestValue}
+              selectedValue={destination_location}
               handleValue={(value) => {
-                setInputDestValue(value);
+                dispatchFlightsDetails({
+                  type: "set_destination_location",
+                  payload: { value },
+                });
               }}
               type="text"
               placeholder="Enter city or airport"
               label="To"
-              id="to_location"
             />
           </div>
-          <div className="flex md:gap-4 flex-1 flex-col md:flex-row justify-center items-center">
-            <DateSelect
-              value={selectedDate}
-              handleDepartureDate={(value) => {
+          <div className="flex relative md:gap-4 flex-1 flex-col md:flex-row justify-center items-center">
+            <label
+              htmlFor={"id"}
+              className={`absolute text-gray-400 hover:border-orange-500 focus:border-orange-500  select-none top-[-6px] md:top-[-5px] left-1 px-1 font-medium leading-[18px] text-xs md:text-kg `}
+            >
+              Departure
+            </label>
+            <DatePicker
+              className={`w-full relative bg-transparent  focus:outline-none border-b-2 border-slate-200 hover:border-orange-500 focus:border-orange-500 font-medium text-xs md:text-xs md:leading-7 text-[rgb(20, 24, 35)] py-2 px-2 md:py-5 md:px-4 text-white `}
+              locale={locale}
+              format={"DD-MM-YYYY"}
+              value={dayjs(date_of_journey)}
+              onChange={(value) => {
                 // console.log("handleDate");
-                setSelectedDate(value);
+                const date = dayjs(value.$d).format();
+                const dateFormat = dayjs(date).format("YYYY-MM-DD");
+                dispatchFlightsDetails({
+                  type: "set_date_of_journey",
+                  payload: { value: dateFormat },
+                });
               }}
-              className="w-full relative   bg-transparent text-white focus:outline-none  border-b-2 border-slate-200 hover:border-b-orange-500 hover:bg-transparent focus:border-b-orange-500 active:border-b-orange-500  font-medium text-lg leading-7  py-[20px] px-[16px]  "
             />
+
             <TravellersCount
               value={travel_details}
               handleValue={(secondType, target) => {

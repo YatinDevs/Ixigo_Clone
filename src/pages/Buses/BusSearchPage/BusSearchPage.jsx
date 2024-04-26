@@ -75,7 +75,7 @@ function BusSearchPage() {
   };
 
   return (
-    <div className="mt-20">
+    <div className="mt-16">
       <ContentWrapper>
         <UpdatedSearchPanel
           busJourneyDetails={busJourneyDetails}

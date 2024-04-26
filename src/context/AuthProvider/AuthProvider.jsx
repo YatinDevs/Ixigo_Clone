@@ -1,24 +1,18 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { projectID } from "../../constants";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // Creating context
 const AuthContext = createContext();
-
-// Setting JWT if exists
-const JWT = JSON.parse(localStorage.getItem("authToken"));
-const userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
-
 // AuthProvider component
 export default function AuthProvider({ children }) {
-  // Two States to Track
-  // Show Form on Click Button
-  // Set islogged or Not
   const [showLoginSignupForm, setShowLoginSignupForm] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [redirectTo, setRedirectTo] = useState("");
+  const [previousPath, setPreviousPath] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   async function signUp(user) {
     const bodyObj = { ...user, appType: "bookingportals" };
@@ -35,10 +29,11 @@ export default function AuthProvider({ children }) {
         }
       );
       const data = await respone.json();
-      if (data.status == "fail") {
+      console.log(data);
+      if (data.status === "fail") {
         return new Error("User already exists");
       }
-      if (data.status == "success") {
+      if (data.status === "success") {
         localStorage.setItem("authToken", JSON.stringify(data.token));
         const user = {
           name: data.data.user.name,
@@ -49,12 +44,15 @@ export default function AuthProvider({ children }) {
         if (redirect) {
           setRedirect(false);
           navigate(redirectTo);
+        } else {
+          navigate(previousPath || "/");
         }
       }
     } catch (error) {
       return error;
     }
   }
+
   async function logIn(user) {
     const bodyObj = { ...user, appType: "bookingportals" };
     try {
@@ -70,10 +68,10 @@ export default function AuthProvider({ children }) {
         }
       );
       const data = await respone.json();
-      if (data.status == "fail") {
+      if (data.status === "fail") {
         return new Error("Incorrect EmailId or Password");
       }
-      if (data.status == "success") {
+      if (data.status === "success") {
         localStorage.setItem("authToken", JSON.stringify(data.token));
         const user = { name: data.data.name, email: data.data.email };
         localStorage.setItem("userDetails", JSON.stringify(user));
@@ -81,25 +79,29 @@ export default function AuthProvider({ children }) {
         if (redirect) {
           setRedirect(false);
           navigate(redirectTo);
+        } else {
+          navigate(previousPath || "/");
         }
       }
     } catch (error) {
       return error;
-      // console.log(error);
     }
   }
+
   function logOut() {
-    localStorage.setItem("authToken", null);
-    localStorage.setItem("userDetails", null);
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userDetails");
     setIsLoggedIn(false);
   }
 
-  // On initial Render to Check if Auth Token already present
   useEffect(() => {
+    const JWT = JSON.parse(localStorage.getItem("authToken"));
     if (JWT) {
       setIsLoggedIn(true);
     }
-  }, []);
+    setPreviousPath(location.pathname);
+  }, [location.pathname]);
+
   const provider = {
     showLoginSignupForm,
     setShowLoginSignupForm,
@@ -112,8 +114,9 @@ export default function AuthProvider({ children }) {
     setRedirect,
     redirectTo,
     setRedirectTo,
-    userDetails,
+    userDetails: JSON.parse(localStorage.getItem("userDetails")),
   };
+
   return (
     <AuthContext.Provider value={provider}>{children}</AuthContext.Provider>
   );
