@@ -11,6 +11,7 @@ const Filter = ({
   setSortValue,
   total,
 }) => {
+  console.log(results, total);
   const [priceRange, setPriceRange] = useState([200, 4000]);
 
   return (
@@ -101,7 +102,7 @@ const Filter = ({
             {
               <span className="text-xs px-6 my-2 inline-block text-slate-400">
                 {results
-                  ? `Showing ${results} of ${total}`
+                  ? `Showing ${total} of ${results}`
                   : "No Results Found"}
               </span>
             }

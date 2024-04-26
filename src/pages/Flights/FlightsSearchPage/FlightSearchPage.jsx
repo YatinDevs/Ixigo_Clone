@@ -46,12 +46,13 @@ function FlightSearchPage() {
     setIsLoading(true);
 
     fetchFlightDetails(source, destination, day, sort, filter, 10, page).then(
-      (data) => {
+      (resData) => {
         setIsLoading(false);
         // console.log(data, `data fetched`);
-        setflightsListingResult(data?.data.flights);
-        console.log(data);
-        setTotal(data?.totalResults);
+        setflightsListingResult(resData?.data.flights);
+        console.log(resData);
+        setResults(resData?.results);
+        setTotal(resData?.totalResults);
       }
     );
   }, [source, destination, day, sort, page, filter, filterChange]);
